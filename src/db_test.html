@@ -31,6 +31,6 @@ const response = await fetch(endpoint, {
     body: JSON.stringify({ query: query })
 });
 const result = await response.json();
-console.table(result.data.entry.items);
+console.log(result.data);
 }
 </script>
