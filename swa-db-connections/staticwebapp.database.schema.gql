@@ -1,4 +1,5 @@
-type Person @model {
+type Entry @model {
   id: ID
-  Name: String
+  Date: String
+  Body: String
 }

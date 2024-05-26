@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .stadium {
+    position: relative;
+    width: 1000px; /* Ajusta el tamaño del estadio según sea necesario */
+    height: 800px; /* Ajusta el tamaño del estadio según sea necesario */
+    background-color: #aaf;
+    border-radius: 50%; /* Esto crea la forma de óvalo */
+    /*overflow: hidden; /* Oculta las partes del estadio que salen del óvalo */
+ }
+  
+  .seat {
+    width: 50px;
+    height: 30px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    top: 100px; left: 400px;
+    transform-origin: center;
+  }
+  
+  /* Define la posición de los asientos */
+  .seat.a1 { top: 40%; left: 0%; }
+  .seat.a2 { top: 30%; left: 40%; }
+  .seat.a3 { top: 50%; left: 100%; }
+  /* Agrega más asientos y ajusta sus posiciones según sea necesario */
+  
