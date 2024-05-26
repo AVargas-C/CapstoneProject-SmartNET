@@ -1,5 +1,5 @@
 type Entry @model {
   id: ID
-  Date: String
+  date: String
   Body: String
 }
