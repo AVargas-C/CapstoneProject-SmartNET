@@ -14,14 +14,12 @@
     async function list() {
 
 const query = `
-    {
-      entry {
-        items {
-          id
-          Date
-          Body
+    query {
+        entry {
+            id
+            date
+            Body
         }
-      }
     }`;
     
 const endpoint = "/data-api/graphql";

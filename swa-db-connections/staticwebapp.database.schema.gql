@@ -1,5 +1,10 @@
-type Entry @model {
+type Entry {
   id: ID
   date: String
   Body: String
+}
+
+type Query {
+  entry(id: ID!): Entry
+  batch: [Entry]
 }
