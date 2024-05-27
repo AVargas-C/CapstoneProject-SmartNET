@@ -28,7 +28,11 @@ const response = await fetch(endpoint, {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query: query })
 });
-const result = await response.json();
+
+const resultText = await response.text();
+console.log('Raw response', resultText)
+
+const result = JSON.parse(resultText)
 console.log(result);
 }
 </script>
