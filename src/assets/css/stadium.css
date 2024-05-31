@@ -1,0 +1,30 @@
+ 
+	.st0{fill:#818181;}
+	.st1{fill:#565656;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st2{fill:#008881;stroke:#FFFFFF;stroke-miterlimit:10;}
+	g>text{fill:#FFFFFF; stroke:none; font-family:'GoogleSans-Bold';     font-weight: bold; font-size:4.5935px;}
+	.st6{fill:#20B18E;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st7{fill:#AD1E40;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st8{fill:#FEC983;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st9{fill:#E8497F;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st10{fill:#F78F20;stroke:#FFFFFF;stroke-miterlimit:10;}
+	.st11{fill:#63995D;}
+	.st12{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st13{fill:#326F37;}
+	.st14{fill:#409243;}
+	.st3{fill:#ffffff;     stroke: white;  stroke-width: 0.5;}
+	 a>g:hover rect, 	 a> g:hover polygon,   a>g:hover path{
+opacity:0.5; 
+	}
+    a> g:hover{
+cursor:pointer;
+	}
+    .map-box>svg{
+        width: 100%;
+        height: 100%;
+    }
+    .map-box {
+        /* map box css  */
+        width: 100%;
+    }
+ 
