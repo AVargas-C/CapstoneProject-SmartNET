@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./popupbox+gauge.css">
+</head>
+<body>
+  <div class="center">
+    <button id="open-popup">Open Popup</button><!--open-popup-->
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="overlay"></div>
+    
+    <div class="popup-content">  
+    <!-- START OF POP UP CONTENT CONTAINER -->  
+      <h2>This is a popup title</h2>
+      <p>jiuhsf  dfnds oihnsdfnkofds nkds odnodfonk ndkjndfnfdnjdfsandf dfnnadkfnkadf
+          lksnadnklfdsklndfknlsdfalnknkldsf asdfknfdasnkldasf nklfd
+      </p>
+      <!-- Gauges -->
+      <div class="gauge" id="voltage">
+        <h6>Voltage</h6>
+          <div class="gauge__body">
+            <div class="gauge__fill"></div>
+            <div class="gauge__cover"></div>
+          </div>
+        </div>
+        <div class="gauge" id="current">
+          <h6>Current</h6>
+          <div class="gauge__body">
+            <div class="gauge__fill"></div>
+            <div class="gauge__cover"></div>
+          </div>
+      </div>
+      <!-- Buttons -->
+      <div class="controls">
+          <button class="close-btn">Close</button>
+          <button class="submit-btn">Submit</button>
+      </div>
+    <!-- END OF POP UP CONTENT CONTAINER -->  
+    </div>
+  </div>
+
+  <script src="./popupbox+gauge.js"></script>
+</body>
+</html>
