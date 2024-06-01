@@ -1,5 +1,5 @@
 const { initializeApp } = require('firebase/app');
-const { getDatabase, ref, set } = require('firebase/database');
+const { getDatabase, ref, set, push } = require('firebase/database');
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,19 +16,27 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-// Función para obtener un valor aleatorio entre un rango
+/*---------------------------------------------------------------------------------------------*/
+// Function to generate random number between min and max
 function getRandomValue(min, max) {
     return Math.random() * (max - min) + min;
 }
+  
+// Function to generate timestamp
+function getCurrentTimestamp() {
+return new Date().toISOString();
+}
+
 
 // Función para actualizar los valores en Firebase para cada tap y palco
 function updateValues(tap, palco) {
     const values = {
         voltage: getRandomValue(0, 100),
-        current: getRandomValue(0, 100)
+        current: getRandomValue(0, 100),
+        timestamp: getCurrentTimestamp()
     };
 
-    set(ref(database, `Tap${tap}/Palco${palco}/readings`), values).then(() => {
+    push(ref(database, `Tap${tap}/Palco${palco}/readings`), values).then(() => {
         console.log(`Valores actualizados en Tap${tap}/Palco${palco}/readings: `, values);
     }).catch((error) => {
         console.error(`Error actualizando los valores en Tap${tap}/Palco${palco}/readings: `, error);
