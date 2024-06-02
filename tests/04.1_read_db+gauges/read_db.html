@@ -5,7 +5,7 @@
     <!-- Load Firebase SDKs from CDN -->
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
-    <link rel="stylesheet" href="../01_gauge/gauge.css">
+    <link rel="stylesheet" href="./gauge.css">
     <style>
         table {
             width: 100%;
@@ -31,8 +31,63 @@
             padding: 2px 5px;
             border-radius: 4px;
         }
+        .gauge {
+        border: 2px solid rgb(255, 8, 8);
+        margin: 0px;
+        transform: scale(0.7);
+        display: inline-block;
+        padding: 0px;
+        width: 100%;
+        max-width: 250px;
+        font-family: "Roboto", sans-serif;
+        font-size: 32px;
+        color: #004033;
+        }
+        
+        .gauge__body {
+        width: 100%;
+        height: 0;
+        padding-bottom: 50%;
+        background: #b4c0be;
+        position: relative;
+        border-top-left-radius: 100% 200%;
+        border-top-right-radius: 100% 200%;
+        overflow: hidden;
+        }
+
+        .gauge__fill {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: inherit;
+        height: 100%;
+        background: #009578;
+        transform-origin: center top;
+        transform: rotate(0.25turn);
+        transition: transform 0.2s ease-out;
+        }
+
+        .gauge__cover {
+        width: 75%;
+        height: 150%;
+        background: #ffffff;
+        border-radius: 50%;
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        /* Text */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 25%;
+        box-sizing: border-box;
+        }
     </style>
 </head>
+
+
 <body>
     <h1>Firebase Realtime Data</h1>
     <table id="data-table">
@@ -50,7 +105,7 @@
         </tbody>
     </table>
 
-    <script src="../01_gauge/gauge.js"></script>
+
     <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
@@ -108,23 +163,55 @@
             return readings[lastKey];
         }
 
-        // Function to format the environmental reading for display
+        // Function to format the environmental reading for display with gauges
         function formatAmbientalReading(reading) {
             if (!reading) return '';
-            return `Co2: ${reading.co2}\n` +
-                `Presencia: <span class="${reading.presencia === 'detectada' ? 'detectada' : 'no-detectada'}">${reading.presencia}</span>\n` +
-                `Temperatura: ${reading.temperatura}\n` +
-                `Timestamp: ${reading.timestamp}`;
+            const ambientalHtml = `
+            <div style="display: flex; justify-content: space-between; width: 100%; border: none; padding: 0; margin: 0;">
+                <div class="gauge" style="padding: 0; margin: 0;">
+                    <div class="gauge__body">
+                        <div class="gauge__fill" style="transform: rotate(${Math.round(reading.co2) / (100000* 2)}turn)"></div>
+                        <div class="gauge__cover">${Math.round(reading.co2)} ppm</div>
+                    </div>
+                </div>
+                <div class="gauge" style="padding: 0; margin: 0;">
+                    <div class="gauge__body">
+                        <div class="gauge__fill" style="transform: rotate(${Math.round(reading.temperatura) / (50* 2)}turn)"></div>
+                        <div class="gauge__cover">${Math.round(reading.temperatura)} °C</div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 10px; text-align: center;">
+                Presencia: <span class="${reading.presencia === 'detectada' ? 'detectada' : 'no-detectada'}">${reading.presencia}</span>
+            </div>
+            `;
+            return ambientalHtml;
         }
 
 
-        // Function to format the electrical reading for display
+        // Function to format the electrical reading for display with compact gauges
         function formatElectricaReading(reading) {
             if (!reading) return '';
-            return `Voltaje: ${reading.voltaje}\n` +
-                   `Corriente: ${reading.corriente}\n` +
-                   `Timestamp: ${reading.timestamp}`;
+            const gaugeHtml = `
+            <div style="display: flex; justify-content: space-between; width: 100%; border: none; padding: 0; margin: 0;">
+                <div class="gauge" id="voltage">
+                    <div class="gauge__body">
+                        <div class="gauge__fill" style="transform: rotate(${Math.round(reading.voltaje) / (150* 2)}turn)"></div>
+                        <div class="gauge__cover">${Math.round(reading.voltaje)} V</div>
+                    </div>
+                </div>
+
+                <div class="gauge" id="current">
+                    <div class="gauge__body">
+                        <div class="gauge__fill" style="transform: rotate(${Math.round(reading.corriente) / (20* 2)}turn)"></div>
+                        <div class="gauge__cover">${Math.round(reading.corriente)} A</div>
+                    </div>
+                </div>
+            </div>
+            `;
+            return gaugeHtml;
         }
+
 
         // Listen for changes in the database
         database.ref().on('value', function(snapshot) {
