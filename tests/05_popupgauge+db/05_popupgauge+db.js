@@ -129,7 +129,7 @@ database.ref(`tap:01/${palco}`).once('value').then((snapshot) => {
     
     setGauge(gaugeCo2, latestAmbiental.co2, 60000, "PPM");
     setGauge(gaugeTemperature, latestAmbiental.temperatura, 50, "°C");
-    setGauge(gaugeVoltage, latestElectrical.voltage, 150, "V");
+    setGauge(gaugeVoltage, latestElectrical.voltaje, 150, "V");
     setGauge(gaugeCurrent, latestElectrical.corriente, 20, "A");
     }
 });

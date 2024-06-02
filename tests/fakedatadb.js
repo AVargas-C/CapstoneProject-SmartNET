@@ -54,7 +54,7 @@ taps.forEach((tap, index) => {
 
             const readingsRef = ref(database, `tap:${tap}/palco:${palco}/lecturas_electricas`);
             push(readingsRef, {
-                voltage: values.voltage,
+                voltaje: values.voltage,
                 corriente: values.current,
                 timestamp: values.timestamp
             }).then(() => {
