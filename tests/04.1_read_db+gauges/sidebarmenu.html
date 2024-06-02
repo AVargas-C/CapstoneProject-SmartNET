@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Side Bar Menu</title>
+    <link rel="stylesheet" href="./sidebarmenu_style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Boxicons Icons -->
+    <!-- Load Firebase SDKs from CDN -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+    <link rel="stylesheet" href="./gauge.css">
+  </head>
+
+  <body>
+    <nav class="sidebar">
+      <div class="logo-menu">
+        <h2 class="logo">AZTECA</h2>
+        <i class='bx bx-menu toggle-btn'></i>
+      </div>
+
+      <ul class="list">
+        <li class="list-item active">
+          <a href="./sidebarmenu.html">
+            <i class='bx bx-grid-alt'></i> <!--Icon-->
+            <span class="link-name" style="--i:1;">Dashboard</span>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="./menu_stadium.html">
+            <i class='bx bxs-castle'></i> <!--Icon-->
+            <span class="link-name" style="--i:2;">Stadium</span>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-chat'></i> <!--Icon-->
+            <span class="link-name" style="--i:3;">Messages</span>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-pie-chart-alt-2' ></i> <!--Icon-->
+            <span class="link-name" style="--i:4;">Analytics</span>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-folder' ></i> <!--Icon-->
+            <span class="link-name" style="--i:5;">File Manager</span>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-cart' ></i> <!--Icon-->
+            <span class="link-name" style="--i:6;">Order</span>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-heart' ></i> <!--Icon-->
+            <span class="link-name" style="--i:7;">Saved</span>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="#">
+            <i class='bx bx-cog' ></i> <!--Icon-->
+            <span class="link-name" style="--i:8;">Setting</span>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <h1 id="header-title">Firebase Realtime Data</h1>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Tap</th>
+                <th>Palco</th>
+                <th>Estado Pago</th>
+                <th>Estado Servicio</th>
+                <th>Última Lectura Ambiental</th>
+                <th>Última Lectura Eléctrica</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script src="./sidebarmenu_script.js"></script>
+  </body>
+</html>
