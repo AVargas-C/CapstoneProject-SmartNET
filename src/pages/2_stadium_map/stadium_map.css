@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background : url('../../assets/images/estadio_2.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 100%;
+  background: transparent;
+  backdrop-filter: blur(40px);
+  border-right: 2px solid rgba(255, 255, 255, .2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  padding: 6px 14px;
+  transition: .5s;
+}
+
+.sidebar.active {
+  width: 260px;
+}
+
+.sidebar .logo-menu {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+}
+
+.sidebar .logo-menu .logo {
+  font-size: 25px;
+  color: #fff;
+  pointer-events: none;
+  opacity: 0;
+  transition: .3s;
+}
+
+.sidebar.active .logo-menu .logo {
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+.sidebar .logo-menu .toggle-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  transition: .5;
+}
+
+.sidebar.active .logo-menu .toggle-btn {
+  left: 90%;
+}
+
+.sidebar .list {
+  margin-top: 10px;
+}
+
+.list .list-item {
+  list-style: none;
+  width: 100%;
+  height: 50px;
+  margin: 5px 0;
+  line-height: 50px;
+}
+
+.list .list-item a {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: .5;
+}
+
+.list .list-item.active a, 
+.list .list-item a:hover {
+  background: rgba(255, 255, 255, .2);
+}
+
+.list .list-item a i {
+  min-width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.sidebar .link-name {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+
+.sidebar.active .link-name {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: calc(.1s * var(--i));
+}
+
+
+/* ------------- STADIUM ----------------*/
+.st0{fill:#818181;}
+.st1{fill:#565656;stroke:#FFFFFF;stroke-miterlimit:10;}
+.st2{fill:#008881;stroke:#FFFFFF;stroke-miterlimit:10;}
+g>text{fill:#FFFFFF; stroke:none; font-family:'GoogleSans-Bold';     font-weight: bold; font-size:4.5935px;}
+.st6{fill:#20B18E;stroke:#FFFFFF;stroke-miterlimit:10;}
+.st7{fill:#AD1E40;stroke:#FFFFFF;stroke-miterlimit:10;}
+.st8{fill:#FEC983;stroke:#FFFFFF;stroke-miterlimit:10;}
+.st9{fill:#E8497F;stroke:#FFFFFF;stroke-miterlimit:10;}
+.st10{fill:#F78F20;stroke:#FFFFFF;stroke-miterlimit:10;}
+.st11{fill:#63995D;}
+.st12{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+.st13{fill:#326F37;}
+.st14{fill:#409243;}
+.st3{fill:#ffffff;     stroke: white;  stroke-width: 0.5;}
+
+
+a>g:hover rect, 	 a> g:hover polygon,   a>g:hover path{
+opacity:0.5; 
+}
+a> g:hover{
+cursor:pointer;
+}
+.map-box>svg{
+width: 100%;
+height: 100%;
+}
+.map-box {
+/* map box css  */
+width: 100%;
+}
+
+
+/*-------------- GENERAL -----------------*/
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+/*-------------- POPUP -----------------*/
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup {
+    position: fixed;
+    top: 100vh;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border: 5px solid gray;
+}
+
+.popup .overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 100ms ease-in-out 200ms;
+    border: 5px solid rebeccapurple;
+}
+
+.popup .popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.15);
+    width: 95%;
+    max-width: 400px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 20px;
+    opacity: 1;
+    box-shadow: 0px 2px 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 300ms ease-in-out;
+    border: 5px solid yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup .popup-content h2 {
+    margin: 10px 0px;
+    font-size: 25px;
+    color: #111;
+    text-align: center;
+}
+
+.popup .popup-content p {
+    margin: 15px 0px;
+    color: #222;
+    font-size: 16px;
+    text-align: center;
+}
+
+/*--------------   GAUGES CSS ------------*/
+.gauges-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+.gauge {
+    width: 100%;
+    max-width: 150px;
+    font-family: "Roboto", sans-serif;
+    font-size: 32px;
+    color: #004033;
+    text-align: center;
+    margin: 10px;
+    padding: 0px;
+}
+
+.gauge h6 {
+    margin-bottom: 10px;
+}
+
+.gauge__body {
+    width: 100%;
+    height: 0;
+    padding-bottom: 50%;
+    background: #b4c0be;
+    position: relative;
+    border-top-left-radius: 100% 200%;
+    border-top-right-radius: 100% 200%;
+    overflow: hidden;
+}
+
+.gauge__fill {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: inherit;
+    height: 100%;
+    background: #009578;
+    transform-origin: center top;
+    transform: rotate(0.25turn);
+    transition: transform 0.2s ease-out;
+}
+
+.gauge__cover {
+    width: 75%;
+    height: 150%;
+    background: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 25%;
+    box-sizing: border-box;
+}
+
+/*--------------  PAYMENT and SERVICE ------------*/
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px 0px 10px;
+    align-items: center;
+    width: 300px;
+    padding: 10px;
+    border: 2px solid rgb(255, 8, 8);
+}
+
+.status {
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status-label {
+    margin-right: auto;
+}
+
+
+/*--------------  CLOSE BUTTON ------------*/
+.popup .popup-content .controls {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0px 0px;
+    width: 100%;
+    border: 5px solid rgb(255, 0, 119);
+}
+
+.popup .popup-content .controls button {
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.popup .popup-content .controls .close-btn {
+    background-color: transparent;
+    color: #3284ed;
+}
+
+.popup .popup-content .controls .submit-btn {
+    background: #3284ed;
+    color: #fff;
+}
+
+.popup.active {
+    top: 0px;
+    transition: top 0ms ease-in-out 0ms;
+}
+
+.popup.active .overlay {
+    opacity: 1;
+    transition: all 300ms ease-in-out;
+}
+
+.popup.active .popup-content {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}

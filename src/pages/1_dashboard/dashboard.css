@@ -9,7 +9,7 @@
 
 body {
   min-height: 100vh;
-  background : url('./estadio_2\ copy.jpg') no-repeat;
+  background : url('../../assets/images/estadio_2.jpg') no-repeat;
   background-size: cover;
   background-position: center;
   padding-left: 110px; /* Default sidebar width */
