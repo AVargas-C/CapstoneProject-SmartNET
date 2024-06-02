@@ -5,213 +5,213 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <!-- <link rel="stylesheet" href="./popupbox+gauge.css"> -->
-    <style>
-        /*-------------- GENERAL -----------------*/
-        * {
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-        }
+  <style>
+    /*-------------- GENERAL -----------------*/
+  * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+  }
 
-        body {
-            font-family: "Roboto", sans-serif;
-        }
+  body {
+      font-family: "Roboto", sans-serif;
+  }
 
-        /*-------------- POPUP -----------------*/
-        .center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+  /*-------------- POPUP -----------------*/
+  .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
 
-        .popup {
-            position: fixed;
-            top: 100vh;
-            left: 0px;
-            width: 100%;
-            height: 100%;
-            border: 5px solid gray;
-        }
+  .popup {
+      position: fixed;
+      top: 100vh;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      border: 5px solid gray;
+  }
 
-        .popup .overlay {
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            transition: opacity 100ms ease-in-out 200ms;
-            border: 5px solid rebeccapurple;
-        }
+  .popup .overlay {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 100ms ease-in-out 200ms;
+      border: 5px solid rebeccapurple;
+  }
 
-        .popup .popup-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(1.15);
-            width: 95%;
-            max-width: 400px;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 20px;
-            opacity: 1;
-            box-shadow: 0px 2px 2px 5px rgba(0, 0, 0, 0.05);
-            transition: all 300ms ease-in-out;
-            border: 5px solid yellow;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+  .popup .popup-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.15);
+      width: 95%;
+      max-width: 400px;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 20px;
+      opacity: 1;
+      box-shadow: 0px 2px 2px 5px rgba(0, 0, 0, 0.05);
+      transition: all 300ms ease-in-out;
+      border: 5px solid yellow;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
 
-        .popup .popup-content h2 {
-            margin: 10px 0px;
-            font-size: 25px;
-            color: #111;
-            text-align: center;
-        }
+  .popup .popup-content h2 {
+      margin: 10px 0px;
+      font-size: 25px;
+      color: #111;
+      text-align: center;
+  }
 
-        .popup .popup-content p {
-            margin: 15px 0px;
-            color: #222;
-            font-size: 16px;
-            text-align: center;
-        }
+  .popup .popup-content p {
+      margin: 15px 0px;
+      color: #222;
+      font-size: 16px;
+      text-align: center;
+  }
 
-        /*--------------   GAUGES CSS ------------*/
-        .gauges-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 10px;
-            width: 100%;
-            padding: 10px;
-            border: 2px solid black;
-        }
+  /*--------------   GAUGES CSS ------------*/
+  .gauges-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 10px;
+      width: 100%;
+      padding: 10px;
+      border: 2px solid black;
+  }
 
-        .gauge {
-            width: 100%;
-            max-width: 150px;
-            font-family: "Roboto", sans-serif;
-            font-size: 32px;
-            color: #004033;
-            text-align: center;
-            margin: 10px;
-            padding: 0px;
-        }
+  .gauge {
+      width: 100%;
+      max-width: 150px;
+      font-family: "Roboto", sans-serif;
+      font-size: 32px;
+      color: #004033;
+      text-align: center;
+      margin: 10px;
+      padding: 0px;
+  }
 
-        .gauge h6 {
-            margin-bottom: 10px;
-        }
+  .gauge h6 {
+      margin-bottom: 10px;
+  }
 
-        .gauge__body {
-            width: 100%;
-            height: 0;
-            padding-bottom: 50%;
-            background: #b4c0be;
-            position: relative;
-            border-top-left-radius: 100% 200%;
-            border-top-right-radius: 100% 200%;
-            overflow: hidden;
-        }
+  .gauge__body {
+      width: 100%;
+      height: 0;
+      padding-bottom: 50%;
+      background: #b4c0be;
+      position: relative;
+      border-top-left-radius: 100% 200%;
+      border-top-right-radius: 100% 200%;
+      overflow: hidden;
+  }
 
-        .gauge__fill {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: inherit;
-            height: 100%;
-            background: #009578;
-            transform-origin: center top;
-            transform: rotate(0.25turn);
-            transition: transform 0.2s ease-out;
-        }
+  .gauge__fill {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: inherit;
+      height: 100%;
+      background: #009578;
+      transform-origin: center top;
+      transform: rotate(0.25turn);
+      transition: transform 0.2s ease-out;
+  }
 
-        .gauge__cover {
-                width: 75%;
-                height: 150%;
-                background: #ffffff;
-                border-radius: 50%;
-                position: absolute;
-                top: 25%;
-                left: 50%;
-                transform: translateX(-50%);
-                border: 2px solid green;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding-bottom: 25%;
-                box-sizing: border-box;
-                font-size: 18px; /* Adjust this font-size to fit the text */
-            }
+  .gauge__cover {
+        width: 75%;
+        height: 150%;
+        background: #ffffff;
+        border-radius: 50%;
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 2px solid green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 25%;
+        box-sizing: border-box;
+        font-size: 18px; /* Adjust this font-size to fit the text */
+    }
 
-        /*--------------  PAYMENT and SERVICE ------------*/
-        .flex-container {
-            display: flex;
-            justify-content: space-between;
-            margin: 10px 0px 0px 10px;
-            align-items: center;
-            width: 300px;
-            padding: 10px;
-            border: 2px solid rgb(255, 8, 8);
-        }
+  /*--------------  PAYMENT and SERVICE ------------*/
+  .flex-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0px 0px 10px;
+      align-items: center;
+      width: 300px;
+      padding: 10px;
+      border: 2px solid rgb(255, 8, 8);
+  }
 
-        .status {
-            background-color: green;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
+  .status {
+      background-color: green;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+  }
 
-        .status-label {
-            margin-right: auto;
-        }
+  .status-label {
+      margin-right: auto;
+  }
 
 
-        /*--------------  CLOSE BUTTON ------------*/
-        .popup .popup-content .controls {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0px 0px;
-            width: 100%;
-            border: 5px solid rgb(255, 0, 119);
-        }
+  /*--------------  CLOSE BUTTON ------------*/
+  .popup .popup-content .controls {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0px 0px;
+      width: 100%;
+      border: 5px solid rgb(255, 0, 119);
+  }
 
-        .popup .popup-content .controls button {
-            padding: 10px 20px;
-            border: none;
-            outline: none;
-            font-size: 15px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
+  .popup .popup-content .controls button {
+      padding: 10px 20px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      border-radius: 20px;
+      cursor: pointer;
+  }
 
-        .popup .popup-content .controls .close-btn {
-            background-color: transparent;
-            color: #3284ed;
-        }
+  .popup .popup-content .controls .close-btn {
+      background-color: transparent;
+      color: #3284ed;
+  }
 
-        .popup .popup-content .controls .submit-btn {
-            background: #3284ed;
-            color: #fff;
-        }
+  .popup .popup-content .controls .submit-btn {
+      background: #3284ed;
+      color: #fff;
+  }
 
-        .popup.active {
-            top: 0px;
-            transition: top 0ms ease-in-out 0ms;
-        }
+  .popup.active {
+      top: 0px;
+      transition: top 0ms ease-in-out 0ms;
+  }
 
-        .popup.active .overlay {
-            opacity: 1;
-            transition: all 300ms ease-in-out;
-        }
+  .popup.active .overlay {
+      opacity: 1;
+      transition: all 300ms ease-in-out;
+  }
 
-        .popup.active .popup-content {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-        }
-    </style>
+  .popup.active .popup-content {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+  }
+  </style>
 </head>
 
 
@@ -343,7 +343,7 @@
         </div>
       </div>
       
-      <!-- Presence Status-->
+      <!-- Payment Status-->
       <div class="flex-container">
         <div class="status-label">Presencia: </div>
         <div class="status">Detectada</div>
@@ -417,10 +417,56 @@
         value / (max_value * 2)
     }turn)`;
 
+    // Change the background color based on thresholds
+    if (gauge.id === "voltage") {
+        if (value < 100) {
+            gauge.querySelector(".gauge__fill").style.background = "red";
+        } else if (value <= 121) {
+            gauge.querySelector(".gauge__fill").style.background = "yellow";
+        } else if (value <= 132) {
+            gauge.querySelector(".gauge__fill").style.background = "green";
+        } else if (value <= 140) {
+            gauge.querySelector(".gauge__fill").style.background = "yellow";
+        } else {
+            gauge.querySelector(".gauge__fill").style.background = "red";
+        }
+    } else if (gauge.id === "current" && value > 15) {
+        gauge.querySelector(".gauge__fill").style.background = "red";
+    } else if (gauge.id === "temperature") {
+        if (value < 13) {
+            gauge.querySelector(".gauge__fill").style.background = "lightblue";
+        } else if (value < 25) {
+            gauge.querySelector(".gauge__fill").style.background = "green";
+        } else if (value < 36) {
+            gauge.querySelector(".gauge__fill").style.background = "yellow";
+        } else if (value < 40) {
+            gauge.querySelector(".gauge__fill").style.background = "orange";
+        } else {
+            gauge.querySelector(".gauge__fill").style.background = "red";
+        }
+    } else if (gauge.id === "co2") {
+        if (value < 1000) {
+            gauge.querySelector(".gauge__fill").style.background = "green";
+        } else if (value < 2000) {
+            gauge.querySelector(".gauge__fill").style.background = "yellow";
+        } else if (value < 5000) {
+            gauge.querySelector(".gauge__fill").style.background = "orange";
+        } else if (value < 50000) {
+            gauge.querySelector(".gauge__fill").style.background = "red";
+        } else {
+            gauge.querySelector(".gauge__fill").style.background = "purple";
+        }
+    } else {
+        gauge.querySelector(".gauge__fill").style.background = "#009578";
+    }
+
     gauge.querySelector(".gauge__cover").textContent = `${Math.round(
         value * 1
     )} ${reading_type}`;
   }
+
+
+
 
   setGauge(gaugeVoltage, 141, 150, "V");
   setGauge(gaugeCurrent, 18, 20, "A");
