@@ -7,17 +7,25 @@ function createPopup(id) {
 
     function openPopup() {
         popupNode.classList.add("active");
+        overlay.classList.add("active");
     }
     function closePopup() {
         popupNode.classList.remove("active");
+        overlay.classList.remove("active");
     }
     overlay.addEventListener("click", closePopup);
     closeBtn.addEventListener("click", closePopup);
     return openPopup;
 }
 
-let popup = createPopup ("#popup");
-document.querySelector("#open-popup").addEventListener("click",popup);
+let popup = createPopup("#popup");
+
+document.querySelectorAll("svg g").forEach(function(element) {
+    element.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        popup(); // Open the popup
+    });
+});
 
 /*--------------   GAUGES CSS ------------*/
 const gaugeVoltage = document.querySelector("#voltage");

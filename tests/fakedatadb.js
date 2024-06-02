@@ -17,38 +17,77 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 /*---------------------------------------------------------------------------------------------*/
-// Function to generate random number between min and max
+// Función para generar un número aleatorio entre min y max
 function getRandomValue(min, max) {
     return Math.random() * (max - min) + min;
 }
-  
-// Function to generate timestamp
+
+// Función para generar una marca de tiempo
 function getCurrentTimestamp() {
-return new Date().toISOString();
-}
-
-
-// Función para actualizar los valores en Firebase para cada tap y palco
-function updateValues(tap, palco) {
-    const values = {
-        voltage: getRandomValue(0, 100),
-        current: getRandomValue(0, 100),
-        timestamp: getCurrentTimestamp()
-    };
-
-    push(ref(database, `Tap${tap}/Palco${palco}/readings`), values).then(() => {
-        console.log(`Valores actualizados en Tap${tap}/Palco${palco}/readings: `, values);
-    }).catch((error) => {
-        console.error(`Error actualizando los valores en Tap${tap}/Palco${palco}/readings: `, error);
-    });
+    return new Date().toLocaleString('en-US', { timeZone: 'America/Mexico_City' });
 }
 
 // Actualizar los valores cada 5 segundos para cada tap y palco
-const taps = [1, 2, 3, 4];
-const palcos = [1, 2, 3, 4];
+const taps = Array.from({ length: 20 }, (_, i) => `${String(i + 1).padStart(2, '0')}`);
+const palcosPerTap = 4;
 
-taps.forEach(tap => {
-    palcos.forEach(palco => {
-        setInterval(() => updateValues(tap, palco), 5000);
-    });
+taps.forEach((tap, index) => {
+    const startPalco = index * palcosPerTap + 1;
+    const endPalco = startPalco + palcosPerTap;
+
+    for (let palcoNum = startPalco; palcoNum < endPalco; palcoNum++) {
+        const palco = String(palcoNum).padStart(2, '0');
+
+        setInterval(() => {
+            const values = {
+                voltage: getRandomValue(100, 150),
+                current: getRandomValue(0, 20),
+                timestamp: getCurrentTimestamp(),
+                estado_servicio: Math.random() < 0.5 ? "activo" : "inactivo",
+                estado_pago: Math.random() < 0.5 ? "pagado" : "no pagado",
+                lecturas_ambientales: {
+                    co2: Math.floor(Math.random() * 100001), // Valor aleatorio entre 0 y 100,000
+                    temperatura: getRandomValue(0, 50), // Valor aleatorio entre 0 y 50
+                    presencia: Math.random() < 0.5 ? "detectada" : "no detectada" // Aleatoriamente detectada o no detectada
+                }
+            };
+
+            const readingsRef = ref(database, `tap:${tap}/palco:${palco}/lecturas_electricas`);
+            push(readingsRef, {
+                voltage: values.voltage,
+                corriente: values.current,
+                timestamp: values.timestamp
+            }).then(() => {
+                console.log(`Valores actualizados en Tap${tap}/Palco${palco}/lecturas_electricas: `, values);
+            }).catch((error) => {
+                console.error(`Error actualizando los valores en Tap${tap}/Palco${palco}/lecturas_electricas: `, error);
+            });
+
+            const serviceStatusRef = ref(database, `tap:${tap}/palco:${palco}/estado_servicio`);
+            set(serviceStatusRef, values.estado_servicio).then(() => {
+                console.log(`Estado de servicio actualizado en Tap${tap}/Palco${palco}/estado_servicio: `, values.estado_servicio);
+            }).catch((error) => {
+                console.error(`Error actualizando el estado de servicio en Tap${tap}/Palco${palco}/estado_servicio: `, error);
+            });
+
+            const paymentStatusRef = ref(database, `tap:${tap}/palco:${palco}/estado_pago`);
+            set(paymentStatusRef, values.estado_pago).then(() => {
+                console.log(`Estado de pago actualizado en Tap${tap}/Palco${palco}/estado_pago: `, values.estado_pago);
+            }).catch((error) => {
+                console.error(`Error actualizando el estado de pago en Tap${tap}/Palco${palco}/estado_pago: `, error);
+            });
+
+            const environmentalReadingsRef = ref(database, `tap:${tap}/palco:${palco}/lecturas_ambientales`);
+            push(environmentalReadingsRef, {
+                co2: values.lecturas_ambientales.co2,
+                temperatura: values.lecturas_ambientales.temperatura,
+                presencia: values.lecturas_ambientales.presencia,
+                timestamp: values.timestamp
+            }).then(() => {
+                console.log(`Valores de lecturas ambientales actualizados en Tap${tap}/Palco${palco}/lecturas_ambientales: `, values.lecturas_ambientales);
+            }).catch((error) => {
+                console.error(`Error actualizando los valores de lecturas ambientales en Tap${tap}/Palco${palco}/lecturas_ambientales: `, error);
+            });
+        }, 5000);
+    }
 });

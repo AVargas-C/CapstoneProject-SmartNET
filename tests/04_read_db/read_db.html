@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase Realtime Data</title>
+    <!-- Load Firebase SDKs from CDN -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database-compat.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            white-space: pre-wrap; /* Preserve newlines */
+        }
+    </style>
+</head>
+<body>
+    <h1>Firebase Realtime Data</h1>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Tap</th>
+                <th>Palco</th>
+                <th>Estado Pago</th>
+                <th>Estado Servicio</th>
+                <th>Última Lectura Ambiental</th>
+                <th>Última Lectura Eléctrica</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCnfqYtDnf95RXQvsele6IPmZtUpNhpSPQ",
+            authDomain: "reto-estadioazteca.firebaseapp.com",
+            projectId: "reto-estadioazteca",
+            storageBucket: "reto-estadioazteca.appspot.com",
+            messagingSenderId: "378312513144",
+            appId: "1:378312513144:web:1c80ba54d21c63529c3f8d",
+            databaseURL: "https://reto-estadioazteca-default-rtdb.firebaseio.com"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Reference to the database
+        var database = firebase.database();
+
+        // Function to fetch and display data
+        function fetchData(data) {
+            var tbody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = ''; // Clear existing rows
+
+            for (var tap in data) {
+                for (var palco in data[tap]) {
+                    var lastAmbiental = getLastReading(data[tap][palco]['lecturas_ambientales']);
+                    var lastElectrica = getLastReading(data[tap][palco]['lecturas_electricas']);
+
+                    var row = tbody.insertRow();
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    var cell5 = row.insertCell(4);
+                    var cell6 = row.insertCell(5);
+                    cell1.innerHTML = tap;
+                    cell2.innerHTML = palco;
+                    cell3.innerHTML = data[tap][palco]['estado_pago'];
+                    cell4.innerHTML = data[tap][palco]['estado_servicio'];
+                    cell5.innerHTML = formatAmbientalReading(lastAmbiental);
+                    cell6.innerHTML = formatElectricaReading(lastElectrica);
+                }
+            }
+        }
+
+        // Function to get the last reading from a set of readings
+        function getLastReading(readings) {
+            if (!readings) return null;
+            var lastKey = Object.keys(readings).sort().pop();
+            return readings[lastKey];
+        }
+
+        // Function to format the environmental reading for display
+        function formatAmbientalReading(reading) {
+            if (!reading) return '';
+            return `Co2: ${reading.co2}\n` +
+                   `Presencia: ${reading.presencia}\n` +
+                   `Temperatura: ${reading.temperatura}\n` +
+                   `Timestamp: ${reading.timestamp}`;
+        }
+
+        // Function to format the electrical reading for display
+        function formatElectricaReading(reading) {
+            if (!reading) return '';
+            return `Voltage: ${reading.voltage}\n` +
+                   `Corriente: ${reading.corriente}\n` +
+                   `Timestamp: ${reading.timestamp}`;
+        }
+
+        // Listen for changes in the database
+        database.ref().on('value', function(snapshot) {
+            var data = snapshot.val();
+            console.log('Data updated:', data);  // Debugging log
+            fetchData(data);
+        });
+
+        // Call fetchData on page load
+        window.onload = function() {
+            database.ref().once('value', function(snapshot) {
+                var data = snapshot.val();
+                fetchData(data);
+            });
+        }
+    </script>
+</body>
+</html>
