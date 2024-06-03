@@ -10,6 +10,7 @@
   th { background-color: #f2f2f2; }
   .true { color: white; background-color: green; padding: 2px 4px; border-radius: 4px; }
   .false { color: white; background-color: red; padding: 2px 4px; border-radius: 4px; }
+  button { margin-top: 5px; padding: 5px; }
 </style>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
@@ -27,6 +28,11 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
+
+  function toggleEstadoServicio(palcoKey, currentState) {
+    const newState = !currentState;
+    database.ref(`/${palcoKey}`).update({ estado_servicio: newState });
+  }
 </script>
 </head>
 <body>
@@ -75,12 +81,18 @@
       estadoPagoText.className = palco.estado_pago ? 'true' : 'false';
       estadoPagoCell.appendChild(estadoPagoText);
 
-      // Highlight Estado de Servicio
+      // Highlight Estado de Servicio with Conmutar button
       const estadoServicioCell = row.insertCell(3);
       const estadoServicioText = document.createElement('span');
       estadoServicioText.textContent = palco.estado_servicio ? 'Activo' : 'Inactivo';
       estadoServicioText.className = palco.estado_servicio ? 'true' : 'false';
       estadoServicioCell.appendChild(estadoServicioText);
+
+      const conmutarButton = document.createElement('button');
+      conmutarButton.textContent = 'Conmutar';
+      conmutarButton.onclick = () => toggleEstadoServicio(key, palco.estado_servicio);
+      estadoServicioCell.appendChild(document.createElement('br'));
+      estadoServicioCell.appendChild(conmutarButton);
 
       // Handle Lecturas Ambientales
       let ambientReadings = [];
@@ -88,7 +100,7 @@
         const ambientKeys = Object.keys(palco.lecturas_ambientales).reverse();
         ambientKeys.forEach(id => {
           const reading = palco.lecturas_ambientales[id];
-          const presenciaText = reading.presencia ? 'Detectada' : 'No detectada';
+          const presenciaText = reading.presencia ? 'Yes' : 'No';
           const presenciaClass = reading.presencia ? 'true' : 'false';
           ambientReadings.push(`CO2: ${reading.co2} ppm, Temp: ${reading.temperatura}°C, Presencia: <span class="${presenciaClass}">${presenciaText}</span>, <br>Timestamp: ${reading.timestamp}`);
         });
