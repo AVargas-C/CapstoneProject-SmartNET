@@ -118,7 +118,7 @@ async function generateRandomData(numberOfLoops, numberOfPalcos, corrienteMinVal
 }
 
 // Example usage
-generateRandomData(1, 10, 0.0, 10.0, 0.0, 240.0, 0, 100000, '1', 0.0, 50.0, '1', '1')
+generateRandomData(1, 80, 1.0, 10.0, 40.0, 150.0, 0, 50000, '1', 5.0, 45.0, '1', '1')
   .then(() => {
     console.log("Random data generation complete.");
     process.exit(0);  // Exit the process
