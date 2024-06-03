@@ -12,6 +12,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
 <script>
+
   // Your web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyCnfqYtDnf95RXQvsele6IPmZtUpNhpSPQ",
@@ -22,13 +23,14 @@
     appId: "1:378312513144:web:1c80ba54d21c63529c3f8d"
   };
 
+
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const database = firebase.database();
   console.log("Firebase app initialized successfully.");
-  
 </script>
 </head>
+
 <body>
 <h1>Database Overview</h1>
 <table id="data-table">
@@ -73,7 +75,8 @@
       // Handle Lecturas Ambientales
       let ambientReadings = [];
       if (palco.lecturas_ambientales) {
-        Object.keys(palco.lecturas_ambientales).forEach(id => {
+        const ambientKeys = Object.keys(palco.lecturas_ambientales).reverse();
+        ambientKeys.forEach(id => {
           const reading = palco.lecturas_ambientales[id];
           ambientReadings.push(`CO2: ${reading.co2} ppm, Temp: ${reading.temperatura}°C, Presencia: ${reading.presencia ? 'Yes' : 'No'}, Timestamp: ${reading.timestamp}`);
         });
@@ -83,7 +86,8 @@
       // Handle Lecturas Electricas
       let electricReadings = [];
       if (palco.lecturas_electricas) {
-        Object.keys(palco.lecturas_electricas).forEach(id => {
+        const electricKeys = Object.keys(palco.lecturas_electricas).reverse();
+        electricKeys.forEach(id => {
           const reading = palco.lecturas_electricas[id];
           electricReadings.push(`Voltage: ${reading.voltage}V, Corriente: ${reading.corriente}A, Timestamp: ${reading.timestamp}`);
         });
