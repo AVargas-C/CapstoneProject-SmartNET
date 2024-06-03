@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Database Overview All Entries</title>
+<title>Database Overview Last Entry</title>
 <style>
   body { font-family: Arial, sans-serif; }
   table { width: 100%; border-collapse: collapse; }
@@ -36,7 +36,7 @@
 </script>
 </head>
 <body>
-<h1>Database Overview All Entries</h1>
+<h1>Database Overview Last Entry</h1>
 <table id="data-table">
   <thead>
     <tr>
@@ -95,28 +95,24 @@
       estadoServicioCell.appendChild(conmutarButton);
 
       // Handle Lecturas Ambientales
-      let ambientReadings = [];
+      let latestAmbientReading = "";
       if (palco.lecturas_ambientales) {
-        const ambientKeys = Object.keys(palco.lecturas_ambientales).reverse();
-        ambientKeys.forEach(id => {
-          const reading = palco.lecturas_ambientales[id];
-          const presenciaText = reading.presencia ? 'Yes' : 'No';
-          const presenciaClass = reading.presencia ? 'true' : 'false';
-          ambientReadings.push(`CO2: ${reading.co2} ppm, Temp: ${reading.temperatura}°C, Presencia: <span class="${presenciaClass}">${presenciaText}</span>, <br>Timestamp: ${reading.timestamp}`);
-        });
+        const latestAmbientKey = Object.keys(palco.lecturas_ambientales).sort().reverse()[0];
+        const latestReading = palco.lecturas_ambientales[latestAmbientKey];
+        const presenciaText = latestReading.presencia ? 'Yes' : 'No';
+        const presenciaClass = latestReading.presencia ? 'true' : 'false';
+        latestAmbientReading = `CO2: ${latestReading.co2} ppm, Temp: ${latestReading.temperatura}°C, Presencia: <span class="${presenciaClass}">${presenciaText}</span>, <br>Timestamp: ${latestReading.timestamp}`;
       }
-      row.insertCell(4).innerHTML = ambientReadings.join(';<br><br>');
+      row.insertCell(4).innerHTML = latestAmbientReading;
 
       // Handle Lecturas Electricas
-      let electricReadings = [];
+      let latestElectricReading = "";
       if (palco.lecturas_electricas) {
-        const electricKeys = Object.keys(palco.lecturas_electricas).reverse();
-        electricKeys.forEach(id => {
-          const reading = palco.lecturas_electricas[id];
-          electricReadings.push(`Voltage: ${reading.voltage}V, Corriente: ${reading.corriente}A, <br>Timestamp: ${reading.timestamp}`);
-        });
+        const latestElectricKey = Object.keys(palco.lecturas_electricas).sort().reverse()[0];
+        const latestReading = palco.lecturas_electricas[latestElectricKey];
+        latestElectricReading = `Voltage: ${latestReading.voltage}V, Corriente: ${latestReading.corriente}A, <br>Timestamp: ${latestReading.timestamp}`;
       }
-      row.insertCell(5).innerHTML = electricReadings.join(';<br><br>');
+      row.insertCell(5).innerHTML = latestElectricReading;
     });
   }
 
