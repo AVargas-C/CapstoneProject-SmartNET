@@ -9,7 +9,13 @@ On Linux: source venv/bin/activate
 4. Install Dependencies
 pip install -r requirements.txt
 
-///
+//ACTIVATE VIRTUAL ENVIROMENT//
 .\venv\Scripts\activate    # On Windows
 source venv/bin/activate   # On Linux
-pip install -r requirements.txt
+
+RUN FILE
+On Windows: python yourfile.py
+On Linux: python3 yourfile.py
+
+//EXIT VIRTUAL Environment//
+deactivate        # On Windows & Linux
