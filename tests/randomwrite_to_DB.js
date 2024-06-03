@@ -118,7 +118,20 @@ async function generateRandomData(numberOfLoops, numberOfPalcos, corrienteMinVal
 }
 
 // Example usage
-generateRandomData(1, 80, 1.0, 10.0, 40.0, 150.0, 0, 50000, '1', 5.0, 45.0, '1', '1')
+generateRandomData(
+    1,      // number_of_loops
+    2,      //number_of_palcos
+    1.0,    //corriente_min_value
+    10.0,   //corriente_max_value
+    40.0,   //voltage_min_value
+    150.0,  //voltage_max_value
+    0,      //co2_min_value
+    50000,  //co2_max_value
+    '1',    //presencia_value
+    5.0,    //temperatura_min_value
+    45.0,   //temperatura_max_value
+    '1',    //estado_pago_value
+    '1')    //estado_servicio_value
   .then(() => {
     console.log("Random data generation complete.");
     process.exit(0);  // Exit the process

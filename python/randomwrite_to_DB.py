@@ -101,12 +101,17 @@ def generate_random_data(number_of_loops, number_of_palcos, corriente_min_value,
     print("Random data generation complete.")
 
 # Example usage
-generate_random_data(number_of_loops=1, 
-  number_of_palcos=10, 
-  corriente_min_value=0.0, corriente_max_value=10.0, 
-  voltage_min_value=0.0, voltage_max_value=240.0, 
-  co2_min_value=0, co2_max_value=100000, 
-  presencia_value='1', 
-  temperatura_min_value=0.0, temperatura_max_value=50.0, 
-  estado_pago_value='1', 
-  estado_servicio_value='1')
+generate_random_data(
+    number_of_loops=1, 
+    number_of_palcos=10, 
+    corriente_min_value=0.0,
+    corriente_max_value=10.0, 
+    voltage_min_value=0.0,
+    voltage_max_value=240.0, 
+    co2_min_value=0,
+    co2_max_value=100000, 
+    presencia_value='1', 
+    temperatura_min_value=0.0,
+    temperatura_max_value=50.0, 
+    estado_pago_value='1', 
+    estado_servicio_value='1')
