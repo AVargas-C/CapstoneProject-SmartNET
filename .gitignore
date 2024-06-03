@@ -1,3 +1,4 @@
 node_modules/
 /test-results/
+venv/
 key-reto-estadioazteca-firebase.json
