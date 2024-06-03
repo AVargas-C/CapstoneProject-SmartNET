@@ -26,10 +26,8 @@ def update_database(palco, corriente, voltage, co2, presencia, temperatura):
     palco_number = int(palco.split(':')[1])
     tap_number = get_tap_number(palco_number)
     
-    # Update tap, estado_pago, estado_servicio
+    # Update tap
     ref.child(f'{palco}/tap').set(tap_number)
-    ref.child(f'{palco}/estado_pago').set(True)  # You can modify this as needed
-    ref.child(f'{palco}/estado_servicio').set(True)  # You can modify this as needed
     
     # Add new readings to lecturas_ambientales
     ambientales_ref = ref.child(f'{palco}/lecturas_ambientales').push()
@@ -49,12 +47,13 @@ def update_database(palco, corriente, voltage, co2, presencia, temperatura):
     })
 
     print(f"Data successfully written to Firebase Realtime Database:\n"
-          f"palco: {palco}\n"
+          f"{palco}\n"
+          f"tap: {tap_number}\n"
           f"corriente = {corriente}\n"
           f"voltage = {voltage}\n"
           f"co2 = {co2}\n"
           f"presencia = {presencia}\n"
-          f"temperatura = {temperatura}")
+          f"temperatura = {temperatura}\n")
 
 # Example usage
 update_database('palco:001', corriente=5.0, voltage=220.0, co2=400, presencia=True, temperatura=22.5)
