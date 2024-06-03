@@ -1,13 +1,16 @@
 import firebase_admin
-from firebase_admin import credentials, db
+from firebase_admin import credentials
+from firebase_admin import db
 from datetime import datetime
 import pytz
 
-# Initialize the Firebase app
-cred = credentials.Certificate('path/to/your/serviceAccountKey.json')
+# Initialize the app with a service account
+cred = credentials.Certificate('../src/assets/DB/key-reto-estadioazteca-firebase.json')
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://your-database-name.firebaseio.com/'
+    'databaseURL': 'https://reto-estadioazteca-default-rtdb.firebaseio.com/'
 })
+
+print("Firebase app initialized successfully.")
 
 # Get a reference to the database
 ref = db.reference()
@@ -45,7 +48,13 @@ def update_database(palco, corriente, voltage, co2, presencia, temperatura):
         'timestamp': get_mexico_city_time()
     })
 
+    print(f"Data successfully written to Firebase Realtime Database:\n"
+          f"palco: {palco}\n"
+          f"corriente = {corriente}\n"
+          f"voltage = {voltage}\n"
+          f"co2 = {co2}\n"
+          f"presencia = {presencia}\n"
+          f"temperatura = {temperatura}")
+
 # Example usage
 update_database('palco:001', corriente=5.0, voltage=220.0, co2=400, presencia=True, temperatura=22.5)
-
-print("Data successfully written to Firebase Realtime Database.")
