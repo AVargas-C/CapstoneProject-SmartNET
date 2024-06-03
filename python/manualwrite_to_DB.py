@@ -59,5 +59,13 @@ def update_database(palco, corriente, voltage, co2, presencia, temperatura, esta
           f"estado_pago = {estado_pago}\n"
           f"estado_servicio = {estado_servicio}\n")
 
-# Example usage
-update_database('palco:081', corriente=5.0, voltage=220.0, co2=400, presencia=True, temperatura=22.5, estado_pago=True, estado_servicio=False)
+#------------- CODE USAGE --------------
+update_database(
+    'palco:081', 
+    corriente=5.0, 
+    voltage=220.0, 
+    co2=400, 
+    presencia=True, 
+    temperatura=22.5, 
+    estado_pago=True, 
+    estado_servicio=False)

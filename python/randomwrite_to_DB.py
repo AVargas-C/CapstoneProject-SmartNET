@@ -100,7 +100,7 @@ def generate_random_data(number_of_loops, number_of_palcos, corriente_min_value,
     
     print("Random data generation complete.")
 
-# Example usage
+#------------- CODE USAGE --------------
 generate_random_data(
     number_of_loops=1, 
     number_of_palcos=10, 

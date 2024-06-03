@@ -55,5 +55,5 @@ def update_database(palco, corriente, voltage, co2, presencia, temperatura):
           f"presencia = {presencia}\n"
           f"temperatura = {temperatura}\n")
 
-# Example usage
+#------------- CODE USAGE --------------
 update_database('palco:001', corriente=5.0, voltage=220.0, co2=400, presencia=True, temperatura=22.5)
