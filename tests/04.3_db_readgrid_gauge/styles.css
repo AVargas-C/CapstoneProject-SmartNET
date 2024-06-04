@@ -1,0 +1,67 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 10% 10% 10% 10% 30% 30%; /* Adjust widths as needed */
+  gap: 1px; /* This creates the grid lines */
+  background-color: #ccc; /* Grid line color */
+}
+
+.grid-header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.grid-item {
+  background-color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Additional styles for responsiveness and scrolling */
+.grid-container {
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Enhance grid lines if needed */
+.grid-container > div {
+  border-bottom: 1px solid #ccc;
+}
+
+.grid-header:last-child, .grid-item:last-child {
+  border-right: none;
+}
+
+/* Boolean value styles */
+.boolean-true {
+  background-color: green;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.boolean-false {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Style for the summary element */
+.summary-item {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #ccc;
+}

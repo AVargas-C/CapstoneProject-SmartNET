@@ -1,7 +1,7 @@
-// Your web app's Firebase configuration
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCnfqYtDnf95RXQvsele6IPmZtUpNhpSPQ",
     authDomain: "reto-estadioazteca.firebaseapp.com",
@@ -48,21 +48,20 @@ function populateGrid(data) {
             const tap = `Tap: ${data[key].tap}`;
             const estadoPago = data[key].estado_pago ? '<span class="boolean-true">Pagado</span>' : '<span class="boolean-false">No pagado</span>';
             const estadoServicio = data[key].estado_servicio;
+
             const amb = data[key].lecturas_ambientales;
             const elec = data[key].lecturas_electricas;
 
-            const sortedAmbientales = Object.values(amb).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-            const sortedElectricas = Object.values(elec).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            const latestAmbiental = Object.values(amb).reduce((latest, entry) => {
+                return new Date(entry.timestamp) > new Date(latest.timestamp) ? entry : latest;
+            }, Object.values(amb)[0]);
 
-            let lecturasAmbientales = '';
-            sortedAmbientales.forEach(entry => {
-                lecturasAmbientales += `CO2: ${entry.co2} ppm, Temp: ${entry.temperatura}°C, Presencia: ${applyBooleanStyle(entry.presencia, 'presencia')}, <br>Timestamp: ${entry.timestamp}<br><br>`;
-            });
+            const latestElectrica = Object.values(elec).reduce((latest, entry) => {
+                return new Date(entry.timestamp) > new Date(latest.timestamp) ? entry : latest;
+            }, Object.values(elec)[0]);
 
-            let lecturasElectricas = '';
-            sortedElectricas.forEach(entry => {
-                lecturasElectricas += `Voltage: ${entry.voltage}V, Corriente: ${entry.corriente}A, <br>Timestamp: ${entry.timestamp}<br><br>`;
-            });
+            const lecturasAmbientales = `CO2: ${latestAmbiental.co2} ppm, Temp: ${latestAmbiental.temperatura}°C, Presencia: ${applyBooleanStyle(latestAmbiental.presencia, 'presencia')}, <br>Timestamp: ${latestAmbiental.timestamp}<br><br>`;
+            const lecturasElectricas = `Voltage: ${latestElectrica.voltage}V, Corriente: ${latestElectrica.corriente}A, <br>Timestamp: ${latestElectrica.timestamp}<br><br>`;
 
             container.innerHTML += `
                 <div class="grid-item">${palco}</div>
