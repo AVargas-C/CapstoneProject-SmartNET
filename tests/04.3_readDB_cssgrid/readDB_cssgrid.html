@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS GRID</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="grid-container">
+        <!-- Headers -->
+        <div class="grid-header">Palco</div>
+        <div class="grid-header">Tap</div>
+        <div class="grid-header">Estado de Pago</div>
+        <div class="grid-header">Estado de Servicio</div>
+        <div class="grid-header">Lecturas Ambientales</div>
+        <div class="grid-header">Lecturas Eléctricas</div>
+        <!-- Dynamic content will be loaded here -->
+    </div>
+    <script>
+        const container = document.querySelector('.grid-container');
+
+        fetch('./DB_example_10palcos.json')  // Adjust the path if your JSON is in a different directory
+            .then(response => response.json())
+            .then(data => populateGrid(data))
+            .catch(error => console.error('Error loading the data:', error));
+
+        function populateGrid(data) {
+            for (const key in data) {
+                const palco = key;
+                const tap = data[key].tap;
+                const estadoPago = data[key].estado_pago ? 'Pagado' : 'No pagado';
+                const estadoServicio = data[key].estado_servicio ? 'Activo' : 'Inactivo';
+                const amb = data[key].lecturas_ambientales;
+                const elec = data[key].lecturas_electricas;
+                const ambientalesKeys = Object.keys(amb)[0];
+                const electricasKeys = Object.keys(elec)[0];
+                const lecturasAmbientales = `CO2: ${amb[ambientalesKeys].co2} ppm, Temp: ${amb[ambientalesKeys].temperatura}°C, Presencia: ${amb[ambientalesKeys].presencia ? 'Sí' : 'No'}, Timestamp: ${amb[ambientalesKeys].timestamp}`;
+                const lecturasElectricas = `Voltage: ${elec[electricasKeys].voltage}V, Corriente: ${elec[electricasKeys].corriente}A, Timestamp: ${elec[electricasKeys].timestamp}`;
+
+                container.innerHTML += `
+                    <div class="grid-item">${palco}</div>
+                    <div class="grid-item">/tap: ${tap}</div>
+                    <div class="grid-item">${estadoPago}</div>
+                    <div class="grid-item">${estadoServicio}</div>
+                    <div class="grid-item">${lecturasAmbientales}</div>
+                    <div class="grid-item">${lecturasElectricas}</div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -119,8 +119,8 @@ async function generateRandomData(numberOfLoops, numberOfPalcos, corrienteMinVal
 
 // Example usage
 generateRandomData(
-    1,      // number_of_loops
-    10,      //number_of_palcos
+    2,      // number_of_loops
+    20,      //number_of_palcos
     1.0,    //corriente_min_value
     10.0,   //corriente_max_value
     40.0,   //voltage_min_value

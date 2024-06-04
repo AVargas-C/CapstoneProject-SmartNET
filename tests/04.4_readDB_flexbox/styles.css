@@ -1,0 +1,87 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  flex: 1;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.flex-item {
+  background-color: #fff;
+  padding: 10px;
+  text-align: center;
+  flex: 1;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.flex-row:nth-child(even) .flex-item {
+  background-color: #f9f9f9;
+}
+
+.flex-row:nth-child(odd) .flex-item {
+  background-color: #f2f2f2;
+}
+
+/* Enhance border between rows */
+.flex-row {
+  border-bottom: 1px solid #ccc;
+}
+
+.flex-row:last-child {
+  border-bottom: none;
+}
+
+/* Boolean value styles */
+.boolean-true {
+  background-color: green;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.boolean-false {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Set specific column widths */
+.column-palco {
+  flex-basis: 20px;
+}
+
+.column-tap {
+  flex-basis: 20px;
+}
+
+.column-estado-pago {
+  flex-basis: 20px;
+}
+
+.column-estado-servicio {
+  flex-basis: 20px;
+}
