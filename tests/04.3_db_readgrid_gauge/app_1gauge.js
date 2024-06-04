@@ -58,17 +58,11 @@ function createGauge(id) {
 }
 
 function updateGauge(gauge, value, max_value, reading_type) {
-    if (!gauge) {
-        console.error('Gauge element is null or undefined.');
+    if (value < 0 || value > max_value) {
         return;
     }
 
     const fill = gauge.querySelector(".gauge__fill");
-    if (!fill) {
-        console.error('Gauge fill element is null or undefined.');
-        return;
-    }
-
     fill.style.transition = 'transform 2s ease-in-out'; // Ensure transition is applied
     requestAnimationFrame(() => {
         fill.style.transform = `rotate(${value / (max_value * 2)}turn)`;
@@ -104,11 +98,7 @@ function populateGrid(data) {
                 return new Date(entry.timestamp) > new Date(latest.timestamp) ? entry : latest;
             }, Object.values(elec)[0]);
 
-            const lecturasAmbientalesGauges = `
-                <div id="gauge-co2-${key}"></div>
-                <div id="gauge-temp-${key}"></div>
-                <div>${applyBooleanStyle(latestAmbiental.presencia, 'presencia')}</div>
-            `;
+            const lecturasAmbientales = `CO2: ${latestAmbiental.co2} ppm, Temp: ${latestAmbiental.temperatura}°C, Presencia: ${applyBooleanStyle(latestAmbiental.presencia, 'presencia')}, <br>Timestamp: ${latestAmbiental.timestamp}<br><br>`;
 
             const voltageGaugeId = `gauge-voltage-${key}`;
             const currentGaugeId = `gauge-current-${key}`;
@@ -124,27 +114,17 @@ function populateGrid(data) {
                     ${applyBooleanStyle(estadoServicio)}<br>
                     <button onclick="toggleEstadoServicio('${key}', ${estadoServicio})">Conmutar</button>
                 </div>
-                <div class="grid-item lecturasAmbientales" id="lecturasAmbientales-${key}">${lecturasAmbientalesGauges}</div>
+                <div class="grid-item lecturasAmbientales" id="lecturasAmbientales-${key}">${lecturasAmbientales}</div>
                 <div class="grid-item gauge-container" id="gauge-container-${key}">${voltageGauge.outerHTML}${currentGauge.outerHTML}</div>
             `;
 
             // Store initial values
             lastValues[voltageGaugeId] = latestElectrica.voltage;
             lastValues[currentGaugeId] = latestElectrica.corriente;
-            lastValues[`gauge-co2-${key}`] = latestAmbiental.co2;
-            lastValues[`gauge-temp-${key}`] = latestAmbiental.temperatura;
 
             requestAnimationFrame(() => {
                 updateGauge(document.getElementById(voltageGaugeId), latestElectrica.voltage, 150, 'V');
                 updateGauge(document.getElementById(currentGaugeId), latestElectrica.corriente, 30, 'A');
-
-                const co2Gauge = createGauge(`gauge-co2-${key}`);
-                const tempGauge = createGauge(`gauge-temp-${key}`);
-                document.getElementById(`gauge-co2-${key}`).appendChild(co2Gauge);
-                document.getElementById(`gauge-temp-${key}`).appendChild(tempGauge);
-
-                updateGauge(co2Gauge, latestAmbiental.co2, 55000, 'ppm');
-                updateGauge(tempGauge, latestAmbiental.temperatura, 50, '°C');
             });
         }
     }
@@ -154,15 +134,9 @@ function updateExistingGauges(data) {
     for (const key in data) {
         if (data.hasOwnProperty(key)) {
             const elec = data[key].lecturas_electricas;
-            const amb = data[key].lecturas_ambientales;
-
             const latestElectrica = Object.values(elec).reduce((latest, entry) => {
                 return new Date(entry.timestamp) > new Date(latest.timestamp) ? entry : latest;
             }, Object.values(elec)[0]);
-
-            const latestAmbiental = Object.values(amb).reduce((latest, entry) => {
-                return new Date(entry.timestamp) > new Date(latest.timestamp) ? entry : latest;
-            }, Object.values(amb)[0]);
 
             const voltageGaugeId = `gauge-voltage-${key}`;
             const currentGaugeId = `gauge-current-${key}`;
@@ -187,44 +161,17 @@ function updateExistingGauges(data) {
                 });
             }
 
-            const co2GaugeId = `gauge-co2-${key}`;
-            const tempGaugeId = `gauge-temp-${key}`;
-            const co2GaugeElement = document.getElementById(co2GaugeId);
-            const tempGaugeElement = document.getElementById(tempGaugeId);
-
-            if (co2GaugeElement && tempGaugeElement) {
-                const lastCo2 = lastValues[co2GaugeId] || 0;
-                const lastTemp = lastValues[tempGaugeId] || 0;
-
-                lastValues[co2GaugeId] = latestAmbiental.co2;
-                lastValues[tempGaugeId] = latestAmbiental.temperatura;
-
-                console.log('Updating CO2 gauge:', co2GaugeId, lastCo2, latestAmbiental.co2);
-                console.log('Updating Temp gauge:', tempGaugeId, lastTemp, latestAmbiental.temperatura);
-
-                requestAnimationFrame(() => {
-                    updateGauge(co2GaugeElement, lastCo2, 55000, 'ppm');
-                    updateGauge(tempGaugeElement, lastTemp, 50, '°C');
-                });
-
-                requestAnimationFrame(() => {
-                    updateGauge(co2GaugeElement, latestAmbiental.co2, 55000, 'ppm');
-                    updateGauge(tempGaugeElement, latestAmbiental.temperatura, 50, '°C');
-                });
-            } else {
-                console.error('Gauge elements not found for:', co2GaugeId, tempGaugeId);
-            }
-
             const palco = `Palco: ${key.split(':')[1].trim()}`;
             const tap = `Tap: ${data[key].tap}`;
             const estadoPago = data[key].estado_pago ? '<span class="boolean-true">Pagado</span>' : '<span class="boolean-false">No pagado</span>';
             const estadoServicio = data[key].estado_servicio;
 
-            const lecturasAmbientalesGauges = `
-                <div id="gauge-co2-${key}"></div>
-                <div id="gauge-temp-${key}"></div>
-                <div>${applyBooleanStyle(latestAmbiental.presencia, 'presencia')}</div>
-            `;
+            const amb = data[key].lecturas_ambientales;
+            const latestAmbiental = Object.values(amb).reduce((latest, entry) => {
+                return new Date(entry.timestamp) > new Date(latest.timestamp) ? entry : latest;
+            }, Object.values(amb)[0]);
+
+            const lecturasAmbientales = `CO2: ${latestAmbiental.co2} ppm, Temp: ${latestAmbiental.temperatura}°C, Presencia: ${applyBooleanStyle(latestAmbiental.presencia, 'presencia')}, <br>Timestamp: ${latestAmbiental.timestamp}<br><br>`;
 
             document.getElementById(`palco-${key}`).innerHTML = palco;
             document.getElementById(`tap-${key}`).innerHTML = tap;
@@ -233,22 +180,7 @@ function updateExistingGauges(data) {
                 ${applyBooleanStyle(estadoServicio)}<br>
                 <button onclick="toggleEstadoServicio('${key}', ${estadoServicio})">Conmutar</button>
             `;
-            document.getElementById(`lecturasAmbientales-${key}`).innerHTML = lecturasAmbientalesGauges;
-
-            const co2Gauge = createGauge(co2GaugeId);
-            const tempGauge = createGauge(tempGaugeId);
-            document.getElementById(co2GaugeId).appendChild(co2Gauge);
-            document.getElementById(tempGaugeId).appendChild(tempGauge);
-
-            requestAnimationFrame(() => {
-                updateGauge(co2Gauge, lastValues[co2GaugeId], 55000, 'ppm');
-                updateGauge(tempGauge, lastValues[tempGaugeId], 50, '°C');
-            });
-
-            requestAnimationFrame(() => {
-                updateGauge(co2Gauge, latestAmbiental.co2, 55000, 'ppm');
-                updateGauge(tempGauge, latestAmbiental.temperatura, 50, '°C');
-            });
+            document.getElementById(`lecturasAmbientales-${key}`).innerHTML = lecturasAmbientales;
         }
     }
 }

@@ -109,7 +109,7 @@ generate_random_data(
     voltage_min_value=0.0,
     voltage_max_value=150.0, 
     co2_min_value=0,
-    co2_max_value=100000, 
+    co2_max_value=55000, 
     presencia_value='1', 
     temperatura_min_value=0.0,
     temperatura_max_value=50.0, 
