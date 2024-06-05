@@ -1,142 +1,185 @@
-const admin = require('firebase-admin');
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-// Initialize the Firebase app
-const serviceAccount = require('../src/assets/DB/key-reto-estadioazteca-firebase.json');
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyCnfqYtDnf95RXQvsele6IPmZtUpNhpSPQ",
+    authDomain: "reto-estadioazteca.firebaseapp.com",
+    projectId: "reto-estadioazteca",
+    storageBucket: "reto-estadioazteca.appspot.com",
+    messagingSenderId: "378312513144",
+    appId: "1:378312513144:web:1c80ba54d21c63529c3f8d",
+    databaseURL: "https://reto-estadioazteca-default-rtdb.firebaseio.com"
+};
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://reto-estadioazteca-default-rtdb.firebaseio.com/'
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+const container = document.querySelector('.grid-container');
+
+// Store the last values of the gauges
+const lastValues = {};
+
+function applyBooleanStyle(value, type) {
+    if (type === 'presencia') {
+        return value ? '<span class="boolean-true">Sí</span>' : '<span class="boolean-false">No</span>';
+    }
+    return value ? '<span class="boolean-true">Activo</span>' : '<span class="boolean-false">Inactivo';
+}
+
+function toggleEstadoServicio(palcoId, currentState) {
+    const newState = !currentState;
+    const updates = {};
+    updates[`/${palcoId}/estado_servicio`] = newState;
+    update(ref(database), updates);
+}
+
+function createGauge(id) {
+    const gauge = document.createElement('div');
+    gauge.className = 'gauge';
+    gauge.id = id;
+    
+    const gaugeBody = document.createElement('div');
+    gaugeBody.className = 'gauge__body';
+    
+    const gaugeFill = document.createElement('div');
+    gaugeFill.className = 'gauge__fill';
+    gaugeFill.style.transition = 'transform 2s ease-in-out'; // Smooth animation
+    
+    const gaugeCover = document.createElement('div');
+    gaugeCover.className = 'gauge__cover';
+    
+    gaugeBody.appendChild(gaugeFill);
+    gaugeBody.appendChild(gaugeCover);
+    gauge.appendChild(gaugeBody);
+
+    return gauge;
+}
+
+function updateGauge(gauge, value, max_value, reading_type) {
+    if (value < 0 || value > max_value) {
+        return;
+    }
+
+    const fill = gauge.querySelector(".gauge__fill");
+    fill.style.transition = 'transform 2s ease-in-out'; // Ensure transition is applied
+    setTimeout(() => {
+        fill.style.transform = `rotate(${value / (max_value * 2)}turn)`;
+    }, 0);
+    gauge.querySelector(".gauge__cover").textContent = `${Math.round(value)} ${reading_type}`;
+}
+
+function populateGrid(data) {
+    container.innerHTML = `
+        <div class="grid-header">Palco</div>
+        <div class="grid-header">Tap</div>
+        <div class="grid-header">Estado de Pago</div>
+        <div class="grid-header">Estado de Servicio</div>
+        <div class="grid-header">Lecturas Ambientales</div>
+        <div class="grid-header">Lecturas Eléctricas</div>
+    `;
+
+    for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+            const palco = `Palco: ${key.split(':')[1].trim()}`;
+            const tap = `Tap: ${data[key].tap}`;
+            const estadoPago = data[key].estado_pago ? '<span class="boolean-true">Pagado</span>' : '<span class="boolean-false">No pagado</span>';
+            const estadoServicio = data[key].estado_servicio;
+
+            const amb = data[key].lecturas_ambientales;
+            const elec = data[key].lecturas_electricas;
+
+            const latestAmbiental = Object.values(amb).reduce((latest, entry) => {
+                return new Date(entry.timestamp) > new Date(latest.timestamp) ? entry : latest;
+            }, Object.values(amb)[0]);
+
+            const latestElectrica = Object.values(elec).reduce((latest, entry) => {
+                return new Date(entry.timestamp) > new Date(latest.timestamp) ? entry : latest;
+            }, Object.values(elec)[0]);
+
+            const lecturasAmbientales = `CO2: ${latestAmbiental.co2} ppm, Temp: ${latestAmbiental.temperatura}°C, Presencia: ${applyBooleanStyle(latestAmbiental.presencia, 'presencia')}, <br>Timestamp: ${latestAmbiental.timestamp}<br><br>`;
+
+            const voltageGaugeId = `gauge-voltage-${key}`;
+            const currentGaugeId = `gauge-current-${key}`;
+
+            const voltageGauge = createGauge(voltageGaugeId);
+            const currentGauge = createGauge(currentGaugeId);
+
+            container.innerHTML += `
+                <div class="grid-item">${palco}</div>
+                <div class="grid-item">${tap}</div>
+                <div class="grid-item">${estadoPago}</div>
+                <div class="grid-item">
+                    ${applyBooleanStyle(estadoServicio)}<br>
+                    <button onclick="toggleEstadoServicio('${key}', ${estadoServicio})">Conmutar</button>
+                </div>
+                <div class="grid-item">${lecturasAmbientales}</div>
+                <div class="grid-item gauge-container" id="gauge-container-${key}">${voltageGauge.outerHTML}${currentGauge.outerHTML}</div>
+            `;
+
+            // Store initial values
+            lastValues[voltageGaugeId] = latestElectrica.voltage;
+            lastValues[currentGaugeId] = latestElectrica.corriente;
+
+            setTimeout(() => {
+                updateGauge(document.getElementById(voltageGaugeId), latestElectrica.voltage, 150, 'V');
+                updateGauge(document.getElementById(currentGaugeId), latestElectrica.corriente, 30, 'A');
+            }, 0);
+        }
+    }
+}
+
+function updateExistingGauges(data) {
+    for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+            const elec = data[key].lecturas_electricas;
+
+            const latestElectrica = Object.values(elec).reduce((latest, entry) => {
+                return new Date(entry.timestamp) > new Date(latest.timestamp) ? entry : latest;
+            }, Object.values(elec)[0]);
+
+            const voltageGaugeId = `gauge-voltage-${key}`;
+            const currentGaugeId = `gauge-current-${key}`;
+
+            const voltageGauge = document.getElementById(voltageGaugeId);
+            const currentGauge = document.getElementById(currentGaugeId);
+
+            if (voltageGauge && currentGauge) {
+                // Ensure the transition happens from the last value
+                const lastVoltage = lastValues[voltageGaugeId] || 0;
+                const lastCurrent = lastValues[currentGaugeId] || 0;
+
+                // Set the gauges to the last value before transitioning to the new value
+                updateGauge(voltageGauge, lastVoltage, 150, 'V');
+                updateGauge(currentGauge, lastCurrent, 30, 'A');
+
+                // Store the new values
+                lastValues[voltageGaugeId] = latestElectrica.voltage;
+                lastValues[currentGaugeId] = latestElectrica.corriente;
+
+                setTimeout(() => {
+                    updateGauge(voltageGauge, latestElectrica.voltage, 150, 'V');
+                    updateGauge(currentGauge, latestElectrica.corriente, 30, 'A');
+                }, 0);
+            }
+        }
+    }
+}
+
+const dataRef = ref(database, '/');
+onValue(dataRef, (snapshot) => {
+    const data = snapshot.val();
+    if (data) {
+        console.log('Data from Firebase:', data);  // Debugging line
+        populateGrid(data);
+        updateExistingGauges(data);
+    } else {
+        console.error('No data available');
+    }
+}, (error) => {
+    console.error('Error loading the data:', error);
 });
 
-console.log("Firebase app initialized successfully.");
-
-// Get a reference to the database
-const db = admin.database();
-
-function getTapNumber(palcoNumber) {
-  return Math.floor((palcoNumber - 1) / 4) + 1;
-}
-
-function getMexicoCityTime() {
-  return new Date().toLocaleString("en-US", { timeZone: "America/Mexico_City" });
-}
-
-function getRandomFloat(min, max) {
-  return parseFloat((Math.random() * (max - min) + min).toFixed(2));
-}
-
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function getRandomBoolean() {
-  return Math.random() >= 0.5;
-}
-
-async function updateDatabase(palco, corriente, voltage, co2, presencia, temperatura, estado_pago, estado_servicio) {
-  const palcoNumber = parseInt(palco.split(':')[1], 10);
-  const tapNumber = getTapNumber(palcoNumber);
-
-  // Update tap, estado_pago, estado_servicio
-  await db.ref(`${palco}/tap`).set(tapNumber);
-  await db.ref(`${palco}/estado_pago`).set(estado_pago);
-  await db.ref(`${palco}/estado_servicio`).set(estado_servicio);
-
-  // Add new readings to lecturas_ambientales
-  const ambientalesRef = db.ref(`${palco}/lecturas_ambientales`).push();
-  await ambientalesRef.set({
-    co2: co2,
-    temperatura: temperatura,
-    presencia: presencia,
-    timestamp: getMexicoCityTime()
-  });
-
-  // Add new readings to lecturas_electricas
-  const electricasRef = db.ref(`${palco}/lecturas_electricas`).push();
-  await electricasRef.set({
-    voltage: voltage,
-    corriente: corriente,
-    timestamp: getMexicoCityTime()
-  });
-
-  console.log(`Data successfully written to Firebase Realtime Database:
-  palco: ${palco}
-  tap = ${tapNumber}
-  corriente = ${corriente}
-  voltage = ${voltage}
-  co2 = ${co2}
-  presencia = ${presencia}
-  temperatura = ${temperatura}
-  estado_pago = ${estado_pago}
-  estado_servicio = ${estado_servicio}\n`);
-}
-
-async function generateRandomData(numberOfLoops, numberOfPalcos, corrienteMinValue, corrienteMaxValue, voltageMinValue, voltageMaxValue, co2MinValue, co2MaxValue, presenciaValue, temperaturaMinValue, temperaturaMaxValue, estadoPagoValue, estadoServicioValue) {
-  for (let j = 0; j < numberOfLoops; j++) {
-    for (let i = 1; i <= numberOfPalcos; i++) {
-      const palco = `palco:${String(i).padStart(3, '0')}`;
-      const corriente = getRandomFloat(corrienteMinValue, corrienteMaxValue);
-      const voltage = getRandomFloat(voltageMinValue, voltageMaxValue);
-      const co2 = getRandomInt(co2MinValue, co2MaxValue);
-      const temperatura = getRandomFloat(temperaturaMinValue, temperaturaMaxValue);
-      
-      let presencia, estado_pago, estado_servicio;
-
-      if (presenciaValue === '1') {
-        presencia = getRandomBoolean();
-      } else if (presenciaValue.toLowerCase() === 'true') {
-        presencia = true;
-      } else if (presenciaValue.toLowerCase() === 'false') {
-        presencia = false;
-      } else {
-        throw new Error("Invalid value for presencia_value. Use '1', 'true', or 'false'.");
-      }
-
-      if (estadoPagoValue === '1') {
-        estado_pago = getRandomBoolean();
-      } else if (estadoPagoValue.toLowerCase() === 'true') {
-        estado_pago = true;
-      } else if (estadoPagoValue.toLowerCase() === 'false') {
-        estado_pago = false;
-      } else {
-        throw new Error("Invalid value for estado_pago. Use '1', 'true', or 'false'.");
-      }
-
-      if (estadoServicioValue === '1') {
-        estado_servicio = getRandomBoolean();
-      } else if (estadoServicioValue.toLowerCase() === 'true') {
-        estado_servicio = true;
-      } else if (estadoServicioValue.toLowerCase() === 'false') {
-        estado_servicio = false;
-      } else {
-        throw new Error("Invalid value for estado_servicio. Use '1', 'true', or 'false'.");
-      }
-
-      await updateDatabase(palco, corriente, voltage, co2, presencia, temperatura, estado_pago, estado_servicio);
-    }
-  }
-}
-
-// Example usage
-generateRandomData(
-    2,      // number_of_loops
-    20,      //number_of_palcos
-    1.0,    //corriente_min_value
-    10.0,   //corriente_max_value
-    40.0,   //voltage_min_value
-    150.0,  //voltage_max_value
-    0,      //co2_min_value
-    50000,  //co2_max_value
-    '1',    //presencia_value
-    5.0,    //temperatura_min_value
-    45.0,   //temperatura_max_value
-    '1',    //estado_pago_value
-    '1')    //estado_servicio_value
-  .then(() => {
-    console.log("Random data generation complete.");
-    process.exit(0);  // Exit the process
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);  // Exit with an error code
-  });
+// Make toggleEstadoServicio globally accessible
+window.toggleEstadoServicio = toggleEstadoServicio;
