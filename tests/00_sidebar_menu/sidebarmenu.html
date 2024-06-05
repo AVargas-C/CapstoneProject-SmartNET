@@ -70,7 +70,14 @@
       </ul>
     </nav>
 
-    <script src="./sidebarmenu.js"></script>
+    <script>
+      const sidebar = document.querySelector('.sidebar');
+      const toggleBtn = document.querySelector('.toggle-btn');
+
+      toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      });
+    </script>
 
   </body>
 
