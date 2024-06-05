@@ -1,0 +1,41 @@
+#sudo nano /usr/local/bin/usb-switch.sh
+
+
+#!/bin/bash
+
+PRIMARY_INTERFACE="usb0"
+SECONDARY_INTERFACE="usb1"
+TEST_IP="8.8.8.8"
+CHECK_INTERVAL=30
+
+while true; do
+    # Check if primary interface is up
+    if ip link show $PRIMARY_INTERFACE | grep -q "state UP"; then
+        # Check for Internet connectivity
+        if ping -c 1 -W 2 $TEST_IP >/dev/null; then
+            echo "$(date): Primary interface ($PRIMARY_INTERFACE) is up and has Internet access."
+            # Ensure we are using the primary interface
+            ip route replace default via $(ip route get 8.8.8.8 | awk 'NR==1 {print $3}') dev $PRIMARY_INTERFACE
+        else
+            echo "$(date): Primary interface ($PRIMARY_INTERFACE) is up but has NO Internet access. Switching to secondary interface ($SECONDARY_INTERFACE)."
+            ip route replace default via $(ip route get 8.8.8.8 | awk 'NR==1 {print $3}') dev $SECONDARY_INTERFACE
+        fi
+    else
+        echo "$(date): Primary interface ($PRIMARY_INTERFACE) is NOT up. Trying to bring it up..."
+        ip link set $PRIMARY_INTERFACE up
+        sleep 10  # Wait a bit to see if the connection succeeds
+
+        if ip link show $PRIMARY_INTERFACE | grep -q "state UP" && ping -c 1 -W 2 $TEST_IP >/dev/null; then
+            echo "$(date): Successfully brought up primary interface ($PRIMARY_INTERFACE) with Internet access."
+            ip route replace default via $(ip route get 8.8.8.8 | awk 'NR==1 {print $3}') dev $PRIMARY_INTERFACE
+        else
+            echo "$(date): Failed to bring up primary interface ($PRIMARY_INTERFACE) or no Internet access. Switching to secondary interface ($SECONDARY_INTERFACE)."
+            ip route replace default via $(ip route get 8.8.8.8 | awk 'NR==1 {print $3}') dev $SECONDARY_INTERFACE
+        fi
+    fi
+
+    sleep $CHECK_INTERVAL
+done
+
+
+#sudo chmod +x /usr/local/bin/usb-switch.sh
