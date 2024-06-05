@@ -4,6 +4,7 @@ from firebase_admin import db
 from datetime import datetime
 import pytz
 import random
+import time  # Add this at the beginning of your script with other imports
 
 # Initialize the Firebase app
 cred = credentials.Certificate('../src/assets/DB/key-reto-estadioazteca-firebase.json')
@@ -97,21 +98,22 @@ def generate_random_data(number_of_loops, number_of_palcos, corriente_min_value,
                 raise ValueError("Invalid value for estado_servicio. Use '1', 'true', or 'false'.")
 
             update_database(palco, corriente, voltage, co2, presencia, temperatura, estado_pago, estado_servicio)
-    
+            
+        time.sleep(5)  # Wait for 5 seconds after the print statement
     print("Random data generation complete.")
 
 #------------- CODE USAGE --------------
 generate_random_data(
-    number_of_loops=1, 
-    number_of_palcos=3, 
+    number_of_loops=20, 
+    number_of_palcos=1, 
     corriente_min_value=0.0,
     corriente_max_value=10.0, 
     voltage_min_value=0.0,
     voltage_max_value=150.0, 
     co2_min_value=0,
-    co2_max_value=55000, 
+    co2_max_value=5000, 
     presencia_value='1', 
-    temperatura_min_value=0.0,
-    temperatura_max_value=50.0, 
+    temperatura_min_value=1.0,
+    temperatura_max_value=45.0, 
     estado_pago_value='1', 
     estado_servicio_value='1')

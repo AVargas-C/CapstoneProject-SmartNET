@@ -67,6 +67,53 @@ function updateGauge(gauge, value, max_value, reading_type) {
         fill.style.transform = `rotate(${value / (max_value * 2)}turn)`;
     });
     gauge.querySelector(".gauge__cover").textContent = `${Math.round(value)} ${reading_type}`;
+
+    // Change the background color based on thresholds
+    if (gauge.id.includes("voltage")) {
+        if (value < 100) {
+            fill.style.background = "red";
+        } else if (value <= 121) {
+            fill.style.background = "yellow";
+        } else if (value <= 132) {
+            fill.style.background = "green";
+        } else if (value <= 140) {
+            fill.style.background = "yellow";
+        } else {
+            fill.style.background = "red";
+        }
+    } else if (gauge.id.includes("current") && value > 5) {
+        fill.style.background = "red";
+    } else if (gauge.id.includes("temp")) {
+        if (value < 13) {
+            fill.style.background = "lightblue";
+        } else if (value < 25) {
+            fill.style.background = "green";
+        } else if (value < 36) {
+            fill.style.background = "yellow";
+        } else if (value < 40) {
+            fill.style.background = "orange";
+        } else {
+            fill.style.background = "red";
+        }
+    } else if (gauge.id.includes("co2")) {
+        if (value < 1000) {
+            fill.style.background = "green";
+        } else if (value < 2000) {
+            fill.style.background = "yellow";
+        } else if (value < 5000) {
+            fill.style.background = "orange";
+        } else if (value < 10000) {
+            fill.style.background = "red";
+        } else {
+            fill.style.background = "purple";
+        }
+    } else {
+        fill.style.background = "#009578";
+    }
+}
+
+function roundFloatValue(value) {
+    return Math.round(parseFloat(value));
 }
 
 function populateGrid(data) {
@@ -123,16 +170,16 @@ function populateGrid(data) {
             `;
 
             // Store initial values and update gauges
-            lastValues[co2GaugeId] = latestAmbiental.co2;
-            lastValues[tempGaugeId] = latestAmbiental.temperatura;
-            lastValues[voltageGaugeId] = latestElectrica.voltage;
-            lastValues[currentGaugeId] = latestElectrica.corriente;
+            lastValues[co2GaugeId] = roundFloatValue(latestAmbiental.co2);
+            lastValues[tempGaugeId] = roundFloatValue(latestAmbiental.temperatura);
+            lastValues[voltageGaugeId] = roundFloatValue(latestElectrica.voltage);
+            lastValues[currentGaugeId] = roundFloatValue(latestElectrica.corriente);
 
             requestAnimationFrame(() => {
-                updateGauge(document.getElementById(co2GaugeId), latestAmbiental.co2, 55000, 'ppm');
-                updateGauge(document.getElementById(tempGaugeId), latestAmbiental.temperatura, 50, '°C');
-                updateGauge(document.getElementById(voltageGaugeId), latestElectrica.voltage, 150, 'V');
-                updateGauge(document.getElementById(currentGaugeId), latestElectrica.corriente, 30, 'A');
+                updateGauge(document.getElementById(co2GaugeId), lastValues[co2GaugeId], 55000, 'ppm');
+                updateGauge(document.getElementById(tempGaugeId), lastValues[tempGaugeId], 50, '°C');
+                updateGauge(document.getElementById(voltageGaugeId), lastValues[voltageGaugeId], 150, 'V');
+                updateGauge(document.getElementById(currentGaugeId), lastValues[currentGaugeId], 30, 'A');
             });
         }
     }
@@ -164,8 +211,8 @@ function updateExistingGauges(data) {
                 const lastVoltage = lastValues[voltageGaugeId] || 0;
                 const lastCurrent = lastValues[currentGaugeId] || 0;
 
-                lastValues[voltageGaugeId] = latestElectrica.voltage;
-                lastValues[currentGaugeId] = latestElectrica.corriente;
+                lastValues[voltageGaugeId] = roundFloatValue(latestElectrica.voltage);
+                lastValues[currentGaugeId] = roundFloatValue(latestElectrica.corriente);
 
                 requestAnimationFrame(() => {
                     updateGauge(voltageGauge, lastVoltage, 150, 'V');
@@ -173,8 +220,8 @@ function updateExistingGauges(data) {
                 });
 
                 requestAnimationFrame(() => {
-                    updateGauge(voltageGauge, latestElectrica.voltage, 150, 'V');
-                    updateGauge(currentGauge, latestElectrica.corriente, 30, 'A');
+                    updateGauge(voltageGauge, lastValues[voltageGaugeId], 150, 'V');
+                    updateGauge(currentGauge, lastValues[currentGaugeId], 30, 'A');
                 });
             }
 
@@ -182,8 +229,8 @@ function updateExistingGauges(data) {
                 const lastCo2 = lastValues[co2GaugeId] || 0;
                 const lastTemp = lastValues[tempGaugeId] || 0;
 
-                lastValues[co2GaugeId] = latestAmbiental.co2;
-                lastValues[tempGaugeId] = latestAmbiental.temperatura;
+                lastValues[co2GaugeId] = roundFloatValue(latestAmbiental.co2);
+                lastValues[tempGaugeId] = roundFloatValue(latestAmbiental.temperatura);
 
                 requestAnimationFrame(() => {
                     updateGauge(co2Gauge, lastCo2, 55000, 'ppm');
@@ -191,8 +238,8 @@ function updateExistingGauges(data) {
                 });
 
                 requestAnimationFrame(() => {
-                    updateGauge(co2Gauge, latestAmbiental.co2, 55000, 'ppm');
-                    updateGauge(tempGauge, latestAmbiental.temperatura, 50, '°C');
+                    updateGauge(co2Gauge, lastValues[co2GaugeId], 55000, 'ppm');
+                    updateGauge(tempGauge, lastValues[tempGaugeId], 50, '°C');
                 });
             }
 
