@@ -9,7 +9,7 @@
   border-radius: 50px;
   height: auto; /* Let height adjust to content */
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  background-color: #263043;
+  background-color: #213555;
 }
 
 .grid-header {
@@ -105,7 +105,7 @@
 .gauge__cover {
   width: 75%;
   height: 150%;
-  background-color: #263043;
+  background-color: #213555;
   border-radius: 50%;
   position: absolute;
   top: 25%;

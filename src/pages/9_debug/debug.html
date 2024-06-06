@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Side Bar Menu with Grid - A responsive web page layout">
-  <title>Histórico en Vivo</title>
+  <title>Debug</title>
   
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -15,9 +15,10 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../../components/css/sidebar_styles.css">
-  <link rel="stylesheet" href="./grid_styles.css">
-  <link rel="stylesheet" href="../../components/css/buttons.css">
+  <link rel="stylesheet" href="./buttons.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Boxicons Icons -->
+  <link rel="stylesheet" href="../../components/css/buttons.css">
+  <link rel="stylesheet" href="styles.css">
   
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Side Bar Menu with Grid">
@@ -57,7 +58,7 @@
         </a>
       </li>
       
-      <li class="list-item  active">
+      <li class="list-item">
         <a href="../4_historic_live/historic_live.html">
           <i class='bx bx-network-chart'></i> <!--Icon-->
           <span class="link-name" style="--i:4;">Live Data</span>
@@ -92,7 +93,7 @@
         </a>
       </li>
 
-      <li class="list-item">
+      <li class="list-item  active">
         <a href="../9_debug/debug.html">
           <i class='bx bx-bug'></i> <!--Icon-->
           <span class="link-name" style="--i:9;">Debug</span>
@@ -133,6 +134,7 @@
       <div class="grid-header">Lecturas Eléctricas</div>
       <!-- Dynamic content will be loaded here -->
     </div>
+    
   
   </div> <!-- Main Container Close Tag -->
   
@@ -154,11 +156,11 @@
 
     // Add event listeners to buttons
     document.getElementById('button1').addEventListener('click', function() {
-      loadScript('./historic_all.js');
+      loadScript('./all_entries.js');
     });
 
     document.getElementById('button2').addEventListener('click', function() {
-      loadScript('./historic_last.js');
+      loadScript('./last_entry.js');
     });
 
     document.getElementById('button3').addEventListener('click', function() {
@@ -170,6 +172,7 @@
       loadScript('./historic_last.js');
     });
   </script>
+  <script type="module" src="./last_entry.js"></script>
   
   <div id="script-container"></div>
   

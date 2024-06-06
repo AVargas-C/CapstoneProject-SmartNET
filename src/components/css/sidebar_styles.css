@@ -11,7 +11,7 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: #1d2634;
+  background-color: #1B262C;
   background-size: cover;
   background-position: center;
 }
@@ -139,7 +139,7 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: #fff;
+  background: #e9e9e9;
   border-radius: 10px;
   padding: 10px 2rem;
   margin-bottom: 1rem;
@@ -157,7 +157,7 @@ body {
 }
 
 .header--title {
-  color: rgba(113, 99, 186, 255);
+  color: #1B262C;
 }
 
 .user--info {
@@ -167,7 +167,7 @@ body {
 }
 
 .search--box {
-  background: rgb(237, 237, 237);
+  background: #FFFFFF;
   border-radius: 15px;
   color: rgba(113, 99, 186, 255);
   display: flex;
