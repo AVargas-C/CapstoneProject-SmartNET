@@ -127,9 +127,13 @@ body {
   position: relative;
   margin-left: 80px; /* Margin when sidebar is expanded */
   padding: 1rem;
-
 }
 
+
+
+
+
+/* header wrapper */
 .header--wrapper img{
   width: 60px;
   height: 60px;

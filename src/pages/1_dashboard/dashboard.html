@@ -15,6 +15,7 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../../components/css/sidebar_styles.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Boxicons Icons -->
   
   <!-- Open Graph Tags -->
@@ -24,8 +25,9 @@
   <meta property="og:url" content="https://example.com">
   <meta name="twitter:card" content="summary_large_image">
 </head>
+
 <body>
-  <!-- Body content -->
+  <!-- Navigation Panel Content -->
   <nav class="sidebar">
     <div class="logo-menu">
       <h2 class="logo">AZTECA</h2>
@@ -50,35 +52,35 @@
 
       <li class="list-item">
         <a href="../3_historic/historic.html">
-          <i class='bx bx-chat'></i> <!--Icon-->
+          <i class='bx bx-line-chart'></i> <!--Icon-->
           <span class="link-name" style="--i:3;">Histórico</span>
         </a>
       </li>
       
       <li class="list-item">
         <a href="../4_historic_live/historic_live.html">
-          <i class='bx bx-pie-chart-alt-2' ></i> <!--Icon-->
-          <span class="link-name" style="--i:4;">Histórico Live</span>
+          <i class='bx bx-network-chart'></i> <!--Icon-->
+          <span class="link-name" style="--i:4;">Live Data</span>
         </a>
       </li>
 
       <li class="list-item">
         <a href="../5_analisis/analisis.html">
-          <i class='bx bx-folder' ></i> <!--Icon-->
+          <i class='bx bx-pie-chart-alt-2' ></i> <!--Icon-->
           <span class="link-name" style="--i:5;">Análisis</span>
         </a>
       </li>
 
       <li class="list-item">
         <a href="../6_treasury/treasury.html">
-          <i class='bx bx-cart' ></i> <!--Icon-->
+          <i class='bx bx-wallet'></i> <!--Icon-->
           <span class="link-name" style="--i:6;">Tesorería</span>
         </a>
       </li>
 
       <li class="list-item">
         <a href="../7_users/users.html">
-          <i class='bx bx-heart' ></i> <!--Icon-->
+          <i class='bx bx-user' ></i> <!--Icon-->
           <span class="link-name" style="--i:7;">Usuarios</span>
         </a>
       </li>
@@ -91,20 +93,36 @@
       </li>
     </ul>
   </nav>
-  
-  <div class="grid-container">
-    <!-- Headers -->
-     <div class="grid-header">Palco</div>
-     <div class="grid-header">Tap</div>
-     <div class="grid-header">Estado de Pago</div>
-     <div class="grid-header">Estado de Servicio</div>
-     <div class="grid-header">Lecturas Ambientales</div>
-     <div class="grid-header">Lecturas Eléctricas</div>
-     <!-- Dynamic content will be loaded here -->
+  <div class="main--content">
+    <div class="header--wrapper">
+      <div class="header--title">
+        <span>Primary</span>
+        <h2>Dashboard</h2>
+      </div>
+      <div class="user--info">
+        <div class="search--box">
+        <i class='bx bx-search' ></i>
+        <input type="text" placeholder="Search"/>
+        </div>
+        <img src="../../public/assets/images/IMG_5542.JPG" alt="">
+      </div>
+    </div>
+    
+    <!-- Content -->
+    <div class="grid-container">
+      <!-- Headers -->
+       <div class="grid-header">Palco</div>
+       <div class="grid-header">Tap</div>
+       <div class="grid-header">Estado de Pago</div>
+       <div class="grid-header">Estado de Servicio</div>
+       <div class="grid-header">Lecturas Ambientales</div>
+       <div class="grid-header">Lecturas Eléctricas</div>
+       <!-- Dynamic content will be loaded here -->
+    </div>
   </div>
-
+  
   <!-- JavaScript -->
   <script type="module" src="./app.js"></script>
-  <script src="./sidebar_script.js"></script>
+  <script src="../../components/js/sidebar_scritp.js"></script>
 </body>
 </html>

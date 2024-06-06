@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Side Bar Menu with Grid - A responsive web page layout">
-  <title>Histórico Live</title>
+  <title>Histórico</title>
   
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -14,7 +14,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   
   <!-- Stylesheet -->
+    <!-- SideBar -->
   <link rel="stylesheet" href="../../components/css/sidebar_styles.css">
+    <!-- Buttons -->
+  <link rel="stylesheet" href="./buttons.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Boxicons Icons -->
   
   <!-- Open Graph Tags -->
@@ -48,37 +51,37 @@
         </a>
       </li>
 
-      <li class="list-item   active">
+      <li class="list-item  active">
         <a href="../3_historic/historic.html">
-          <i class='bx bx-chat'></i> <!--Icon-->
+          <i class='bx bx-line-chart'></i> <!--Icon-->
           <span class="link-name" style="--i:3;">Histórico</span>
         </a>
       </li>
       
       <li class="list-item">
         <a href="../4_historic_live/historic_live.html">
-          <i class='bx bx-pie-chart-alt-2' ></i> <!--Icon-->
-          <span class="link-name" style="--i:4;">Histórico Live</span>
+          <i class='bx bx-network-chart'></i> <!--Icon-->
+          <span class="link-name" style="--i:4;">Live Data</span>
         </a>
       </li>
 
       <li class="list-item">
         <a href="../5_analisis/analisis.html">
-          <i class='bx bx-folder' ></i> <!--Icon-->
+          <i class='bx bx-pie-chart-alt-2' ></i> <!--Icon-->
           <span class="link-name" style="--i:5;">Análisis</span>
         </a>
       </li>
 
       <li class="list-item">
         <a href="../6_treasury/treasury.html">
-          <i class='bx bx-cart' ></i> <!--Icon-->
+          <i class='bx bx-wallet'></i> <!--Icon-->
           <span class="link-name" style="--i:6;">Tesorería</span>
         </a>
       </li>
 
       <li class="list-item">
         <a href="../7_users/users.html">
-          <i class='bx bx-heart' ></i> <!--Icon-->
+          <i class='bx bx-user' ></i> <!--Icon-->
           <span class="link-name" style="--i:7;">Usuarios</span>
         </a>
       </li>
@@ -91,7 +94,6 @@
       </li>
     </ul>
   </nav>
-  
   <div class="main--content">
     <div class="header--wrapper">
       <div class="header--title">
@@ -108,22 +110,22 @@
     </div>
     
     <!-- Content -->
-    <div class="grid-container">
-      <!-- Headers -->
-      <div class="grid-header">Palco</div>
-      <div class="grid-header">Tap</div>
-      <div class="grid-header">Estado de Pago</div>
-      <div class="grid-header">Estado de Servicio</div>
-      <div class="grid-header">Lecturas Ambientales</div>
-      <div class="grid-header">Lecturas Eléctricas</div>
-      <!-- Dynamic content will be loaded here -->
+    <div class="button--wrapper">
+      <button class="header-button" id="button1">All Entries</button>
+      <button class="header-button" id="button2">Last Entry</button>
+      <button class="header-button" id="button3">Last 20 Entries</button>
     </div>
+    
+    <!-- Content -->
+
   
   </div> <!-- Main Container Close Tag -->
   
-
-
   <!-- JavaScript -->
+  <script></script>
+  
+  <div id="script-container"></div>
+  
   <script src="../../components/js/sidebar_scritp.js"></script>
 </body>
 </html>

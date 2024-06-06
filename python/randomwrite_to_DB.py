@@ -7,7 +7,7 @@ import random
 import time  # Add this at the beginning of your script with other imports
 
 # Initialize the Firebase app
-cred = credentials.Certificate('../src/assets/DB/key-reto-estadioazteca-firebase.json')
+cred = credentials.Certificate('../src/components/DB/key-reto-estadioazteca-firebase.json')
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://reto-estadioazteca-default-rtdb.firebaseio.com/'
 })
