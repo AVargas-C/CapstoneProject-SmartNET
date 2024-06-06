@@ -129,6 +129,10 @@ body {
   padding: 1rem;
 }
 
+
+
+
+
 /* header wrapper */
 .header--wrapper {
   display: flex;
@@ -138,11 +142,11 @@ body {
   background: #fff;
   border-radius: 10px;
   padding: 10px 2rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   position: -webkit-sticky; /* For Safari */
   position: sticky;
   top: 0;
-  z-index: 1000; /* Ensure it stays on top of other content */
+  z-index: 10;
 }
 
 .header--wrapper img {
