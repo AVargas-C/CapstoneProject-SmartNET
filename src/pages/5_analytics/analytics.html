@@ -16,6 +16,8 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../../components/css/sidebar_styles.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Boxicons Icons -->
+    <!--Charts CSS-->
+    <link rel="stylesheet" href="./charts.css">
   
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Side Bar Menu with Grid">
@@ -95,8 +97,8 @@
   <div class="main--content">
     <div class="header--wrapper">
       <div class="header--title">
-        <span>Primary</span>
-        <h2>Dashboard</h2>
+        <span>Datos</span>
+        <h2>Análisis de datos</h2>
       </div>
       <div class="user--info">
         <div class="search--box">
@@ -109,22 +111,47 @@
     
     <!-- Content -->
     <div class="charts">
-      <div id="donutchart-pago" style="width: 900px; height: 500px;"></div>
-      <div id="donutchart-servicio" style="width: 900px; height: 500px;"></div>
-      <div id="donutchart-presencia" style="width: 900px; height: 500px;"></div>
-      
-      <div id="combochart_voltage" style="width: 900px; height: 500px;"></div>
-      <div id="candlestickchart_voltage" style="width: 900px; height: 500px;"></div>
-      
-      <div id="combochart_corriente" style="width: 900px; height: 500px;"></div>
-      <div id="donutchart-corriente" style="width: 900px; height: 500px;"></div>
-      <div id="candlestickchart_corriente" style="width: 900px; height: 500px;"></div>
-    
-      <div id="combochart_temperatura" style="width: 900px; height: 500px;"></div>
-      <div id="candlestickchart_temperatura" style="width: 900px; height: 500px;"></div>
-      
-      <div id="combochart_co2" style="width: 900px; height: 500px;"></div>
-      <div id="candlestickchart_co2" style="width: 900px; height: 500px;"></div>  
+      <div class="donut--charts">
+        <div class="title">
+          <h2>Donas</h2>
+        </div>
+        <div class="donut-chart" id="donutchart-pago" style="width: 425px; height: 400px;"></div>
+        <div class="donut-chart" id="donutchart-servicio" style="width: 425px; height: 400px;"></div>
+        <div class="donut-chart" id="donutchart-presencia" style="width: 425px; height: 400px;"></div>
+      </div>
+  
+      <div class="voltage--charts">
+        <div class="title">
+          <h2>Voltage Charts</h2>
+        </div>
+        <div id="combochart_voltage" style="width: 900px; height: 500px;"></div>
+        <div id="candlestickchart_voltage" style="width: 900px; height: 500px;"></div>
+      </div>
+  
+      <div class="current--charts">
+        <div class="title">
+          <h2>Current Charts</h2>
+        </div>
+        <div id="combochart_corriente" style="width: 900px; height: 500px;"></div>
+        <div class="donut-chart" id="donutchart-corriente" style="width: 900px; height: 500px;"></div>
+        <div id="candlestickchart_corriente" style="width: 900px; height: 500px;"></div>
+      </div>
+  
+      <div class="temperature--charts">
+        <div class="title">
+          <h2>Temperature Charts</h2>
+        </div>
+        <div id="combochart_temperatura" style="width: 900px; height: 500px;"></div>
+        <div id="candlestickchart_temperatura" style="width: 900px; height: 500px;"></div>
+      </div>
+  
+      <div class="co2--charts">
+        <div class="title">
+          <h2>CO2 Charts</h2>
+        </div>
+        <div id="combochart_co2" style="width: 900px; height: 500px;"></div>
+        <div id="candlestickchart_co2" style="width: 900px; height: 500px;"></div>  
+      </div>
     </div>
 
   <!-- JavaScript -->

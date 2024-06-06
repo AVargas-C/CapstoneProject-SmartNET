@@ -1,0 +1,42 @@
+.charts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: blue;
+}
+
+.charts > div {
+  margin-bottom: 20px;
+}
+
+.donut--charts, .voltage--charts, .current--charts, .temperature--charts, .co2--charts {
+  background: rgb(255, 255, 255);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the charts */
+  width: 100%;
+  padding: 20px;
+}
+
+.donut--charts .title, .voltage--charts .title, .current--charts .title, .temperature--charts .title, .co2--charts .title {
+  
+  margin-bottom: 10px; /* Space between title and charts */
+}
+
+.donut--charts {
+  display: flex;
+}
+
+.donut--charts .charts-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.donut-chart {
+  display: inline-block;
+  margin: 1px;
+}
