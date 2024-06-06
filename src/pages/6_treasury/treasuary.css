@@ -1,0 +1,47 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+  padding: 10px;
+  background-color: transparent;
+  color: white;
+  border-radius: 10px;
+}
+
+.grid-header {
+  background-color: #0F4C75;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+.grid-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  background-color: transparent;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #F0F0F0;
+  color: #1B262C;
+  border: 1px solid #1B262C;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #1B262C;
+  color: #F0F0F0;
+}
+
+.estado-true {
+  color: green;
+  font-weight: bold;
+}
+
+.estado-false {
+  color: red;
+  font-weight: bold;
+}

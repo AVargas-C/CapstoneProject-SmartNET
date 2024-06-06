@@ -16,6 +16,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../../components/css/sidebar_styles.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Boxicons Icons -->
+  <link rel="stylesheet" href="./treasuary.css">
   
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Side Bar Menu with Grid">
@@ -115,9 +116,22 @@
     </div>
     
     <!-- Content -->
+    <div class="grid-container">
+      <div class="grid-header">Palco</div>
+      <div class="grid-header">Fecha</div>
+      <div class="grid-header">Tipo de Transacción</div>
+      <div class="grid-header">Descripción</div>
+      <div class="grid-header">Monto</div>
+      <div class="grid-header">Comprobante</div>
+      <div class="grid-header">Estado</div>
+      <div class="grid-header">Acción</div>
+    </div>
 
 
   <!-- JavaScript -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="./treasuary.js"></script>
   <script src="../../components/js/sidebar_scritp.js"></script>
 </body>
 </html>
