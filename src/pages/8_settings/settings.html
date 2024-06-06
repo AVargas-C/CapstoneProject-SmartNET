@@ -16,6 +16,7 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../../components/css/sidebar_styles.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Boxicons Icons -->
+  <link rel="stylesheet" href="./settings.css">
   
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Side Bar Menu with Grid">
@@ -99,11 +100,12 @@
       </li>
     </ul>
   </nav>
+
   <div class="main--content">
     <div class="header--wrapper">
       <div class="header--title">
-        <span>Primary</span>
-        <h2>Dashboard</h2>
+        <span>Administrador</span>
+        <h2>Ajustes</h2>
       </div>
       <div class="user--info">
         <div class="search--box">
@@ -115,9 +117,117 @@
     </div>
     
     <!-- Content -->
+    <!-- First Container -->
+    <div class="container-wrapper">
+      <div class="container">
+        <label for="palco">Palco</label>
+        <input type="text" id="palco" placeholder="Número de Palco">
+      
+        <label for="corriente">Corriente</label>
+        <input type="text" id="corriente" placeholder="Corriente">
+      
+        <label for="voltage">Voltage</label>
+        <input type="text" id="voltage" placeholder="Voltage">
+      
+        <label for="co2">CO2</label>
+        <input type="text" id="co2" placeholder="CO2">
+      
+        <label for="presencia">Presencia</label>
+        <select id="presencia">
+          <option value="true">Detectada</option>
+          <option value="false">No Detectada</option>
+          <option value="aleatorio">Aleatorio</option>
+        </select>
+      
+        <label for="temperatura">Temperatura</label>
+        <input type="text" id="temperatura" placeholder="Temperatura">
+      
+        <label for="estado_pago">Estado Pago</label>
+        <select id="estado_pago">
+          <option value="true">Pagado</option>
+          <option value="false">No Pagado</option>
+          <option value="aleatorio">Aleatorio</option>
+        </select>
+      
+        <label for="estado_servicio">Estado Servicio</label>
+        <select id="estado_servicio">
+          <option value="true">Activo</option>
+          <option value="false">Inactivo</option>
+          <option value="aleatorio">Aleatorio</option>
+        </select>
+      
+        <button onclick="submitData()">Submit</button>
+      </div>
+    </div>
 
+    <!-- Second Container -->
+    <div class="container-wrapper">
+      <div class="container">
+        <label for="loops">Number of Loops</label>
+        <input type="text" id="loops" placeholder="Number of Loops">
+      
+        <label for="interval">Interval of Time in seconds</label>
+        <input type="text" id="interval" placeholder="Interval of Time">
+      
+        <label for="palco_min">Palco Min</label>
+        <input type="text" id="palco_min" placeholder="Palco Min">
+      
+        <label for="palco_max">Palco Max</label>
+        <input type="text" id="palco_max" placeholder="Palco Max">
+      
+        <label for="corriente_min">Corriente Min</label>
+        <input type="text" id="corriente_min" placeholder="Corriente Min">
+      
+        <label for="corriente_max">Corriente Max</label>
+        <input type="text" id="corriente_max" placeholder="Corriente Max">
+      
+        <label for="voltage_min">Voltage Min</label>
+        <input type="text" id="voltage_min" placeholder="Voltage Min">
+      
+        <label for="voltage_max">Voltage Max</label>
+        <input type="text" id="voltage_max" placeholder="Voltage Max">
+      
+        <label for="co2_min">CO2 Min</label>
+        <input type="text" id="co2_min" placeholder="CO2 Min">
+      
+        <label for="co2_max">CO2 Max</label>
+        <input type="text" id="co2_max" placeholder="CO2 Max">
+      
+        <label for="presencia2">Presencia</label>
+        <select id="presencia2">
+          <option value="true">Detectada</option>
+          <option value="false">No Detectada</option>
+          <option value="aleatorio">Aleatorio</option>
+        </select>
+      
+        <label for="temperatura_min">Temperatura Min</label>
+        <input type="text" id="temperatura_min" placeholder="Temperatura Min">
+      
+        <label for="temperatura_max">Temperatura Max</label>
+        <input type="text" id="temperatura_max" placeholder="Temperatura Max">
+      
+        <label for="estado_pago2">Estado Pago</label>
+        <select id="estado_pago2">
+          <option value="true">Pagado</option>
+          <option value="false">No Pagado</option>
+          <option value="aleatorio">Aleatorio</option>
+        </select>
+      
+        <label for="estado_servicio2">Estado Servicio</label>
+        <select id="estado_servicio2">
+          <option value="true">Activo</option>
+          <option value="false">Inactivo</option>
+          <option value="aleatorio">Aleatorio</option>
+        </select>
 
+        <button onclick="submitRandomData()">Submit</button>
+      </div>
+    </div>
+  </div>
   <!-- JavaScript -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="./manualwrite_DB.js" defer></script>
   <script src="../../components/js/sidebar_scritp.js"></script>
 </body>
 </html>
