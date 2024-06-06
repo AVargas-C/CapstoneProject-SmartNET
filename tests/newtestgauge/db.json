@@ -1,0 +1,1126 @@
+{
+  "palco:001": {
+    "estado_pago": false,
+    "estado_servicio": true,
+    "lecturas_ambientales": {
+      "-Nzao8hdoFVl8Qu1hHQc": {
+        "co2": 42725,
+        "presencia": false,
+        "temperatura": 39.905323281037354,
+        "timestamp": "6/4/2024, 11:13:02 PM"
+      },
+      "-NzaoCDVjqIiej47_BPU": {
+        "co2": 9842,
+        "presencia": false,
+        "temperatura": 34.71716788520107,
+        "timestamp": "6/4/2024, 11:13:16 PM"
+      },
+      "-NzaoGNPK0g_GPcvMWaX": {
+        "co2": 30621,
+        "presencia": true,
+        "temperatura": 35.818772096663686,
+        "timestamp": "6/4/2024, 11:13:33 PM"
+      },
+      "-NzaoJ8X565ZrOVkmanY": {
+        "co2": 38147,
+        "presencia": false,
+        "temperatura": 26.58510407142337,
+        "timestamp": "6/4/2024, 11:13:44 PM"
+      },
+      "-NzaoJ91ZqUgrjQPgC0q": {
+        "co2": 27495,
+        "presencia": false,
+        "temperatura": 1.1125389289387222,
+        "timestamp": "6/4/2024, 11:13:44 PM"
+      },
+      "-NzaoPTxTXbuKfITt0V5": {
+        "co2": 9672,
+        "presencia": true,
+        "temperatura": 13.402005608794765,
+        "timestamp": "6/4/2024, 11:14:10 PM"
+      },
+      "-NzaoR7x3x5jTHrpAucG": {
+        "co2": 41510,
+        "presencia": true,
+        "temperatura": 32.06850849195144,
+        "timestamp": "6/4/2024, 11:14:17 PM"
+      },
+      "-NzaoTkIABffoy4P_gZU": {
+        "co2": 11678,
+        "presencia": false,
+        "temperatura": 26.075267468213248,
+        "timestamp": "6/4/2024, 11:14:28 PM"
+      },
+      "-Nzay4NfjLl8EQXN2Osl": {
+        "co2": 7577,
+        "presencia": true,
+        "temperatura": 24.897533100849646,
+        "timestamp": "6/4/2024, 11:56:25 PM"
+      },
+      "-Nzay6D3CetYZJtII4WG": {
+        "co2": 42424,
+        "presencia": true,
+        "temperatura": 8.213649945156343,
+        "timestamp": "6/4/2024, 11:56:33 PM"
+      },
+      "-Nzay7r-9zmf6qCK681q": {
+        "co2": 54690,
+        "presencia": true,
+        "temperatura": 25.81479254209129,
+        "timestamp": "6/4/2024, 11:56:40 PM"
+      },
+      "-NzayHVxYHhYCE4E9Dxi": {
+        "co2": 3030,
+        "presencia": false,
+        "temperatura": 24.547402073802626,
+        "timestamp": "6/4/2024, 11:57:19 PM"
+      },
+      "-NzayJYami7ym1PhzYaV": {
+        "co2": 44433,
+        "presencia": false,
+        "temperatura": 22.55570902595797,
+        "timestamp": "6/4/2024, 11:57:27 PM"
+      },
+      "-NzayN8bvr-yz_9EKU_z": {
+        "co2": 5225,
+        "presencia": false,
+        "temperatura": 33.98268623814153,
+        "timestamp": "6/4/2024, 11:57:42 PM"
+      },
+      "-NzbGZx1GwJdTCZuxbgM": {
+        "co2": 40744,
+        "presencia": false,
+        "temperatura": 24.548666299552025,
+        "timestamp": "6/5/2024, 1:21:35 AM"
+      }
+    },
+    "lecturas_electricas": {
+      "-Nzao8hz1BP2FVX9yH0a": {
+        "corriente": 1.075079038472364,
+        "timestamp": "6/4/2024, 11:13:02 PM",
+        "voltage": 39.1222575698356
+      },
+      "-NzaoCDrrr_bCwiTLyNn": {
+        "corriente": 3.921730751318566,
+        "timestamp": "6/4/2024, 11:13:16 PM",
+        "voltage": 95.38787498867171
+      },
+      "-NzaoGNku0_cQS4mg5pT": {
+        "corriente": 9.069788753240793,
+        "timestamp": "6/4/2024, 11:13:33 PM",
+        "voltage": 146.78642355613601
+      },
+      "-NzaoJ8sVCJX5Pti8wE7": {
+        "corriente": 2.9322054432285483,
+        "timestamp": "6/4/2024, 11:13:44 PM",
+        "voltage": 63.81836691699531
+      },
+      "-NzaoJ91ZqUgrjQPgC0r": {
+        "corriente": 5.686491127724613,
+        "timestamp": "6/4/2024, 11:13:44 PM",
+        "voltage": 68.80979455645414
+      },
+      "-NzaoPUIIqSGRC07zweU": {
+        "corriente": 4.764850790686889,
+        "timestamp": "6/4/2024, 11:14:10 PM",
+        "voltage": 2.6307209476939875
+      },
+      "-NzaoR8IWC9cy0BToeCI": {
+        "corriente": 3.856030007909299,
+        "timestamp": "6/4/2024, 11:14:17 PM",
+        "voltage": 87.33759558680333
+      },
+      "-NzaoTkdaKh0HZdW2pyB": {
+        "corriente": 7.502198994844564,
+        "timestamp": "6/4/2024, 11:14:28 PM",
+        "voltage": 38.52680155311774
+      },
+      "-Nzay4O3zpQhJSqQ059-": {
+        "corriente": 1.8746528146359753,
+        "timestamp": "6/4/2024, 11:56:25 PM",
+        "voltage": 105.50019798067163
+      },
+      "-Nzay6DSaHms5VnGDUDm": {
+        "corriente": 8.578957165880194,
+        "timestamp": "6/4/2024, 11:56:33 PM",
+        "voltage": 21.992523034816646
+      },
+      "-Nzay7rOxj_4qRlMaBra": {
+        "corriente": 7.453342110228709,
+        "timestamp": "6/4/2024, 11:56:40 PM",
+        "voltage": 147.40751444879092
+      },
+      "-NzayHWJafFz_cmQRNoF": {
+        "corriente": 5.288125694466754,
+        "timestamp": "6/4/2024, 11:57:19 PM",
+        "voltage": 126.93759471972766
+      },
+      "-NzayJZ-YVE7TPTYio29": {
+        "corriente": 5.850981738022214,
+        "timestamp": "6/4/2024, 11:57:27 PM",
+        "voltage": 109.95307989087988
+      },
+      "-NzayN91xxXgbIjkdS2I": {
+        "corriente": 0.8920278391785241,
+        "timestamp": "6/4/2024, 11:57:42 PM",
+        "voltage": 14.987197194373659
+      },
+      "-NzbGZxXPIxgmu-swpTx": {
+        "corriente": 4.54711066060685,
+        "timestamp": "6/5/2024, 1:21:35 AM",
+        "voltage": 3.0744444911248947
+      }
+    },
+    "tap": 1
+  },
+  "palco:002": {
+    "estado_pago": true,
+    "estado_servicio": false,
+    "lecturas_ambientales": {
+      "-Nzao8i3fNdCfFQiLyeK": {
+        "co2": 20897,
+        "presencia": false,
+        "temperatura": 17.6475866290817,
+        "timestamp": "6/4/2024, 11:13:02 PM"
+      },
+      "-NzaoCDw4lEk-oNQWxnm": {
+        "co2": 45253,
+        "presencia": false,
+        "temperatura": 41.36666212523312,
+        "timestamp": "6/4/2024, 11:13:16 PM"
+      },
+      "-NzaoGNo9vGKmFAaGdMP": {
+        "co2": 37759,
+        "presencia": true,
+        "temperatura": 2.210954098331719,
+        "timestamp": "6/4/2024, 11:13:33 PM"
+      },
+      "-NzaoJ8xijm9xmNKDYFC": {
+        "co2": 43384,
+        "presencia": false,
+        "temperatura": 4.51958739482301,
+        "timestamp": "6/4/2024, 11:13:44 PM"
+      },
+      "-NzaoJ93X8Daj8LmOFcx": {
+        "co2": 41555,
+        "presencia": true,
+        "temperatura": 17.866098094488724,
+        "timestamp": "6/4/2024, 11:13:44 PM"
+      },
+      "-NzaoPUN8lCnJ57lCEyC": {
+        "co2": 10825,
+        "presencia": false,
+        "temperatura": 40.681867553685535,
+        "timestamp": "6/4/2024, 11:14:10 PM"
+      },
+      "-NzaoR8Nc_q6Xerx4UWG": {
+        "co2": 52007,
+        "presencia": true,
+        "temperatura": 33.31419121964575,
+        "timestamp": "6/4/2024, 11:14:17 PM"
+      },
+      "-NzaoTkiuhsj-tFdSacr": {
+        "co2": 24153,
+        "presencia": true,
+        "temperatura": 4.618984356669909,
+        "timestamp": "6/4/2024, 11:14:28 PM"
+      },
+      "-Nzay4O7dEFdx3kQR5Yf": {
+        "co2": 21261,
+        "presencia": true,
+        "temperatura": 22.692894715058433,
+        "timestamp": "6/4/2024, 11:56:25 PM"
+      },
+      "-Nzay6DXDb9MWCcvHB_4": {
+        "co2": 53654,
+        "presencia": true,
+        "temperatura": 26.77521347493902,
+        "timestamp": "6/4/2024, 11:56:33 PM"
+      },
+      "-Nzay7rUvXRMhEPAHR_w": {
+        "co2": 5796,
+        "presencia": false,
+        "temperatura": 30.91520629836202,
+        "timestamp": "6/4/2024, 11:56:40 PM"
+      },
+      "-NzayHWR7XXRRcoSdMGN": {
+        "co2": 15084,
+        "presencia": false,
+        "temperatura": 6.157805604000188,
+        "timestamp": "6/4/2024, 11:57:19 PM"
+      },
+      "-NzayJZ652a8rPgt38T7": {
+        "co2": 23974,
+        "presencia": false,
+        "temperatura": 6.321103626746116,
+        "timestamp": "6/4/2024, 11:57:27 PM"
+      },
+      "-NzayN966BZ5CYAtPFqO": {
+        "co2": 33890,
+        "presencia": true,
+        "temperatura": 42.68505949202578,
+        "timestamp": "6/4/2024, 11:57:42 PM"
+      },
+      "-NzbGZxeA_GwmrVBHW57": {
+        "co2": 22124,
+        "presencia": true,
+        "temperatura": 44.42720673266418,
+        "timestamp": "6/5/2024, 1:21:35 AM"
+      }
+    },
+    "lecturas_electricas": {
+      "-Nzao8i4CKGowXx1_Jj5": {
+        "corriente": 4.054441429707751,
+        "timestamp": "6/4/2024, 11:13:02 PM",
+        "voltage": 75.80402764038975
+      },
+      "-NzaoCDxtUcLPe66-D2e": {
+        "corriente": 0.9089943572627224,
+        "timestamp": "6/4/2024, 11:13:16 PM",
+        "voltage": 37.98679597397319
+      },
+      "-NzaoGNp8a4TL6OMgw5T": {
+        "corriente": 7.122390383598878,
+        "timestamp": "6/4/2024, 11:13:33 PM",
+        "voltage": 27.90051494638429
+      },
+      "-NzaoJ8yaWPmJJygbCKP": {
+        "corriente": 8.578440878571872,
+        "timestamp": "6/4/2024, 11:13:44 PM",
+        "voltage": 27.12685766568319
+      },
+      "-NzaoJ93X8Daj8LmOFcy": {
+        "corriente": 8.514249351420402,
+        "timestamp": "6/4/2024, 11:13:44 PM",
+        "voltage": 39.93802555577135
+      },
+      "-NzaoPUN8lCnJ57lCEyD": {
+        "corriente": 0.752403472211014,
+        "timestamp": "6/4/2024, 11:14:10 PM",
+        "voltage": 24.014823615495484
+      },
+      "-NzaoR8Nc_q6Xerx4UWH": {
+        "corriente": 3.3262231047170387,
+        "timestamp": "6/4/2024, 11:14:17 PM",
+        "voltage": 80.45362070881814
+      },
+      "-NzaoTkjbqURVadgcJtS": {
+        "corriente": 5.06285463235151,
+        "timestamp": "6/4/2024, 11:14:28 PM",
+        "voltage": 91.57918427854229
+      },
+      "-Nzay4O8e9HV1RunPx0J": {
+        "corriente": 7.5925742623833,
+        "timestamp": "6/4/2024, 11:56:25 PM",
+        "voltage": 131.39940146237026
+      },
+      "-Nzay6DY2DY9PoKFzDfE": {
+        "corriente": 7.308154455910714,
+        "timestamp": "6/4/2024, 11:56:33 PM",
+        "voltage": 13.192112385319177
+      },
+      "-Nzay7rVsV4aWJnvSUpp": {
+        "corriente": 4.743449980356013,
+        "timestamp": "6/4/2024, 11:56:40 PM",
+        "voltage": 68.3787628215653
+      },
+      "-NzayHWSO2kshMVQpo0T": {
+        "corriente": 0.7935852104067775,
+        "timestamp": "6/4/2024, 11:57:19 PM",
+        "voltage": 0.8172929721262157
+      },
+      "-NzayJZ7PSDqpWwM1bqC": {
+        "corriente": 2.505558003680044,
+        "timestamp": "6/4/2024, 11:57:27 PM",
+        "voltage": 71.64920680771681
+      },
+      "-NzayN97oIEp8_C1qCk7": {
+        "corriente": 3.0155659325027684,
+        "timestamp": "6/4/2024, 11:57:42 PM",
+        "voltage": 134.93036438230087
+      },
+      "-NzbGZxfAyaNIJpt79m1": {
+        "corriente": 6.127350417000286,
+        "timestamp": "6/5/2024, 1:21:35 AM",
+        "voltage": 137.24871600918368
+      }
+    },
+    "tap": 1
+  },
+  "palco:003": {
+    "estado_pago": false,
+    "estado_servicio": true,
+    "lecturas_ambientales": {
+      "-Nzao8i6iejPYNBFOVSi": {
+        "co2": 25228,
+        "presencia": true,
+        "temperatura": 34.82745603990101,
+        "timestamp": "6/4/2024, 11:13:02 PM"
+      },
+      "-NzaoCDzV7OiZapeAWSb": {
+        "co2": 46192,
+        "presencia": false,
+        "temperatura": 26.76834490644969,
+        "timestamp": "6/4/2024, 11:13:16 PM"
+      },
+      "-NzaoGNrfSfDpKDkfI-R": {
+        "co2": 44352,
+        "presencia": true,
+        "temperatura": 41.149547862490806,
+        "timestamp": "6/4/2024, 11:13:33 PM"
+      },
+      "-NzaoJ9-lkL_nPnWK3_T": {
+        "co2": 30808,
+        "presencia": true,
+        "temperatura": 45.56218562702576,
+        "timestamp": "6/4/2024, 11:13:44 PM"
+      },
+      "-NzaoJ95tKpW_iGI_0A6": {
+        "co2": 13232,
+        "presencia": true,
+        "temperatura": 44.680185493064364,
+        "timestamp": "6/4/2024, 11:13:44 PM"
+      },
+      "-NzaoPUPMoRT1DJnT-dj": {
+        "co2": 18323,
+        "presencia": false,
+        "temperatura": 47.46324502606948,
+        "timestamp": "6/4/2024, 11:14:10 PM"
+      },
+      "-NzaoR8P-uGj3uHm3Nyx": {
+        "co2": 42957,
+        "presencia": true,
+        "temperatura": 18.059180197292303,
+        "timestamp": "6/4/2024, 11:14:17 PM"
+      },
+      "-NzaoTklgYiu3l44cYfn": {
+        "co2": 31667,
+        "presencia": true,
+        "temperatura": 15.97697466669208,
+        "timestamp": "6/4/2024, 11:14:28 PM"
+      },
+      "-Nzay4O9EFVwCoNISAVe": {
+        "co2": 14918,
+        "presencia": true,
+        "temperatura": 33.87624641123915,
+        "timestamp": "6/4/2024, 11:56:25 PM"
+      },
+      "-Nzay6D_koxljpR-3Np-": {
+        "co2": 40529,
+        "presencia": false,
+        "temperatura": 9.319021571691067,
+        "timestamp": "6/4/2024, 11:56:33 PM"
+      },
+      "-Nzay7rX_6nc68-hWXdI": {
+        "co2": 44971,
+        "presencia": false,
+        "temperatura": 21.065702537175934,
+        "timestamp": "6/4/2024, 11:56:40 PM"
+      },
+      "-NzayHWUCRHhlB-aqjwk": {
+        "co2": 37199,
+        "presencia": false,
+        "temperatura": 26.39286080606793,
+        "timestamp": "6/4/2024, 11:57:19 PM"
+      },
+      "-NzayJZ9fhQABwEWivAK": {
+        "co2": 8755,
+        "presencia": true,
+        "temperatura": 17.3967656816699,
+        "timestamp": "6/4/2024, 11:57:27 PM"
+      },
+      "-NzayN99ufun2lmCbCiG": {
+        "co2": 27136,
+        "presencia": false,
+        "temperatura": 2.0716309465361626,
+        "timestamp": "6/4/2024, 11:57:42 PM"
+      },
+      "-NzbGZxhxTmEv25umRAF": {
+        "co2": 12489,
+        "presencia": false,
+        "temperatura": 35.42658768067331,
+        "timestamp": "6/5/2024, 1:21:35 AM"
+      }
+    },
+    "lecturas_electricas": {
+      "-Nzao8i6iejPYNBFOVSj": {
+        "corriente": 7.973474750024245,
+        "timestamp": "6/4/2024, 11:13:02 PM",
+        "voltage": 38.55611901400104
+      },
+      "-NzaoCDzV7OiZapeAWSc": {
+        "corriente": 7.870438602422427,
+        "timestamp": "6/4/2024, 11:13:16 PM",
+        "voltage": 49.575354304077216
+      },
+      "-NzaoGNrfSfDpKDkfI-S": {
+        "corriente": 7.220967836642542,
+        "timestamp": "6/4/2024, 11:13:33 PM",
+        "voltage": 91.39471041204061
+      },
+      "-NzaoJ9-lkL_nPnWK3_U": {
+        "corriente": 5.7617100262106895,
+        "timestamp": "6/4/2024, 11:13:44 PM",
+        "voltage": 24.692903658854938
+      },
+      "-NzaoJ96sKxMObhF79Ur": {
+        "corriente": 2.7672637277270273,
+        "timestamp": "6/4/2024, 11:13:44 PM",
+        "voltage": 133.54992840589563
+      },
+      "-NzaoPUQ1SJCmhavXyw1": {
+        "corriente": 4.316902920469062,
+        "timestamp": "6/4/2024, 11:14:10 PM",
+        "voltage": 78.05651789187083
+      },
+      "-NzaoR8QgXwm0OBaYTwS": {
+        "corriente": 9.611306448888142,
+        "timestamp": "6/4/2024, 11:14:17 PM",
+        "voltage": 28.64035072347424
+      },
+      "-NzaoTkmauQeILDQ7xyI": {
+        "corriente": 5.326939942346815,
+        "timestamp": "6/4/2024, 11:14:28 PM",
+        "voltage": 45.98627304779198
+      },
+      "-Nzay4OA2YNis4yoQr-i": {
+        "corriente": 2.401773228448343,
+        "timestamp": "6/4/2024, 11:56:25 PM",
+        "voltage": 131.47998237529075
+      },
+      "-Nzay6DaHxEkO0NOJ27-": {
+        "corriente": 6.293943157067041,
+        "timestamp": "6/4/2024, 11:56:33 PM",
+        "voltage": 142.88949402396412
+      },
+      "-Nzay7rX_6nc68-hWXdJ": {
+        "corriente": 1.9697799568126917,
+        "timestamp": "6/4/2024, 11:56:40 PM",
+        "voltage": 121.98215173424491
+      },
+      "-NzayHWV8G0vYGnozXCR": {
+        "corriente": 0.207251871618106,
+        "timestamp": "6/4/2024, 11:57:19 PM",
+        "voltage": 64.51942550119499
+      },
+      "-NzayJZAdh-M54c3fKST": {
+        "corriente": 9.09742953661083,
+        "timestamp": "6/4/2024, 11:57:27 PM",
+        "voltage": 78.08609777096292
+      },
+      "-NzayN9As-Wgq-WdA-36": {
+        "corriente": 6.02040704617311,
+        "timestamp": "6/4/2024, 11:57:42 PM",
+        "voltage": 81.70228340319126
+      },
+      "-NzbGZxi47TtHc6m89Ab": {
+        "corriente": 6.703550124501199,
+        "timestamp": "6/5/2024, 1:21:35 AM",
+        "voltage": 101.79124056128391
+      }
+    },
+    "tap": 1
+  },
+  "palco:004": {
+    "estado_pago": true,
+    "estado_servicio": true,
+    "lecturas_ambientales": {
+      "-Nzay4OBW44N04Ite014": {
+        "co2": 45927,
+        "presencia": true,
+        "temperatura": 30.860761037580197,
+        "timestamp": "6/4/2024, 11:56:25 PM"
+      },
+      "-Nzay6Dch6h5E4tqkpYY": {
+        "co2": 16056,
+        "presencia": false,
+        "temperatura": 33.17954061496846,
+        "timestamp": "6/4/2024, 11:56:33 PM"
+      },
+      "-Nzay7rZ7Liee9e5YJbA": {
+        "co2": 31974,
+        "presencia": true,
+        "temperatura": 25.522916619632085,
+        "timestamp": "6/4/2024, 11:56:40 PM"
+      },
+      "-NzayHWXBqFTANXrDvEq": {
+        "co2": 35252,
+        "presencia": true,
+        "temperatura": 34.222956099957194,
+        "timestamp": "6/4/2024, 11:57:19 PM"
+      },
+      "-NzayJZCiDfFRWXgZmJK": {
+        "co2": 22853,
+        "presencia": false,
+        "temperatura": 40.14853328639544,
+        "timestamp": "6/4/2024, 11:57:27 PM"
+      },
+      "-NzayN9Cs_QHVt2WAwFr": {
+        "co2": 17506,
+        "presencia": true,
+        "temperatura": 15.503015993854996,
+        "timestamp": "6/4/2024, 11:57:42 PM"
+      },
+      "-NzbGZxnL7VGeobxOgCS": {
+        "co2": 27796,
+        "presencia": true,
+        "temperatura": 20.197572071258463,
+        "timestamp": "6/5/2024, 1:21:35 AM"
+      }
+    },
+    "lecturas_electricas": {
+      "-Nzay4OBW44N04Ite015": {
+        "corriente": 6.329854846972176,
+        "timestamp": "6/4/2024, 11:56:25 PM",
+        "voltage": 113.73041595893366
+      },
+      "-Nzay6Dch6h5E4tqkpYZ": {
+        "corriente": 5.406498512054414,
+        "timestamp": "6/4/2024, 11:56:33 PM",
+        "voltage": 122.59546542547928
+      },
+      "-Nzay7r_l91H1c_oTnxP": {
+        "corriente": 4.36255397413756,
+        "timestamp": "6/4/2024, 11:56:40 PM",
+        "voltage": 121.69729352703517
+      },
+      "-NzayHWXBqFTANXrDvEr": {
+        "corriente": 5.262884813143261,
+        "timestamp": "6/4/2024, 11:57:19 PM",
+        "voltage": 46.3530908683312
+      },
+      "-NzayJZDT4bLh5PwQ4bM": {
+        "corriente": 8.322659554750484,
+        "timestamp": "6/4/2024, 11:57:27 PM",
+        "voltage": 75.97303708599355
+      },
+      "-NzayN9Cs_QHVt2WAwFs": {
+        "corriente": 0.006156037535522962,
+        "timestamp": "6/4/2024, 11:57:42 PM",
+        "voltage": 59.052255369829055
+      },
+      "-NzbGZxoTjsarP4ZiFEQ": {
+        "corriente": 8.883539813336085,
+        "timestamp": "6/5/2024, 1:21:35 AM",
+        "voltage": 101.37238772032919
+      }
+    },
+    "tap": 1
+  },
+  "palco:005": {
+    "estado_pago": false,
+    "estado_servicio": false,
+    "lecturas_ambientales": {
+      "-Nzay4OCnRq86ll940ID": {
+        "co2": 37031,
+        "presencia": true,
+        "temperatura": 32.361194361865216,
+        "timestamp": "6/4/2024, 11:56:25 PM"
+      },
+      "-Nzay6DfoVa51czyP0pZ": {
+        "co2": 13355,
+        "presencia": false,
+        "temperatura": 49.25384499603561,
+        "timestamp": "6/4/2024, 11:56:33 PM"
+      },
+      "-Nzay7rbA7ziBunxrITj": {
+        "co2": 29183,
+        "presencia": false,
+        "temperatura": 31.025739175205803,
+        "timestamp": "6/4/2024, 11:56:40 PM"
+      },
+      "-NzayHWZqfZwDbJYrUvY": {
+        "co2": 30400,
+        "presencia": true,
+        "temperatura": 3.587908802773776,
+        "timestamp": "6/4/2024, 11:57:19 PM"
+      },
+      "-NzayJZFJfLHi501cagT": {
+        "co2": 43188,
+        "presencia": false,
+        "temperatura": 25.74121654171201,
+        "timestamp": "6/4/2024, 11:57:27 PM"
+      },
+      "-NzayN9FQC5WOPtriFW9": {
+        "co2": 51143,
+        "presencia": true,
+        "temperatura": 33.23564808389757,
+        "timestamp": "6/4/2024, 11:57:42 PM"
+      },
+      "-NzbGZxsdHVZYp1kkUMr": {
+        "co2": 4424,
+        "presencia": true,
+        "temperatura": 46.93466678189138,
+        "timestamp": "6/5/2024, 1:21:35 AM"
+      }
+    },
+    "lecturas_electricas": {
+      "-Nzay4ODHPKei30XYNYD": {
+        "corriente": 9.978737697034646,
+        "timestamp": "6/4/2024, 11:56:25 PM",
+        "voltage": 67.6837312685904
+      },
+      "-Nzay6Dg7J7HLpkuk4Rj": {
+        "corriente": 5.935542086793415,
+        "timestamp": "6/4/2024, 11:56:33 PM",
+        "voltage": 30.830654672728265
+      },
+      "-Nzay7rbA7ziBunxrITk": {
+        "corriente": 5.7553411124126725,
+        "timestamp": "6/4/2024, 11:56:40 PM",
+        "voltage": 56.19046654648032
+      },
+      "-NzayHW_T-iOr4yxOCZj": {
+        "corriente": 7.952280251340249,
+        "timestamp": "6/4/2024, 11:57:19 PM",
+        "voltage": 99.94300103126687
+      },
+      "-NzayJZGXFizMW_v46V7": {
+        "corriente": 3.857043539173479,
+        "timestamp": "6/4/2024, 11:57:27 PM",
+        "voltage": 58.87553115264315
+      },
+      "-NzayN9FQC5WOPtriFWA": {
+        "corriente": 3.685108140524622,
+        "timestamp": "6/4/2024, 11:57:42 PM",
+        "voltage": 30.433303503315745
+      },
+      "-NzbGZxvAXxaVeYWpQex": {
+        "corriente": 5.216867720013097,
+        "timestamp": "6/5/2024, 1:21:35 AM",
+        "voltage": 76.24156609808944
+      }
+    },
+    "tap": 2
+  },
+  "palco:006": {
+    "estado_pago": true,
+    "estado_servicio": false,
+    "lecturas_ambientales": {
+      "-Nzay4OEFcaw1UcVdO1q": {
+        "co2": 41398,
+        "presencia": false,
+        "temperatura": 45.08301314805123,
+        "timestamp": "6/4/2024, 11:56:25 PM"
+      },
+      "-Nzay6DiDcB0BJPyb2tA": {
+        "co2": 26298,
+        "presencia": false,
+        "temperatura": 36.83842267802275,
+        "timestamp": "6/4/2024, 11:56:33 PM"
+      },
+      "-Nzay7rfGvbX59-wZ2GF": {
+        "co2": 34051,
+        "presencia": false,
+        "temperatura": 38.04830965672359,
+        "timestamp": "6/4/2024, 11:56:40 PM"
+      },
+      "-NzayHWadu1LrceiwiOv": {
+        "co2": 40825,
+        "presencia": true,
+        "temperatura": 25.667335156151072,
+        "timestamp": "6/4/2024, 11:57:19 PM"
+      },
+      "-NzayJZImV6tPgfxM-n8": {
+        "co2": 42128,
+        "presencia": false,
+        "temperatura": 2.5945204456048865,
+        "timestamp": "6/4/2024, 11:57:27 PM"
+      },
+      "-NzayN9Hw45IB53bh23i": {
+        "co2": 24165,
+        "presencia": false,
+        "temperatura": 22.881219233398507,
+        "timestamp": "6/4/2024, 11:57:42 PM"
+      },
+      "-NzbGZy0OyBVrTuBLQ3R": {
+        "co2": 30757,
+        "presencia": false,
+        "temperatura": 35.684019740925976,
+        "timestamp": "6/5/2024, 1:21:35 AM"
+      }
+    },
+    "lecturas_electricas": {
+      "-Nzay4OEFcaw1UcVdO1r": {
+        "corriente": 0.8729358077317539,
+        "timestamp": "6/4/2024, 11:56:25 PM",
+        "voltage": 51.99808105436038
+      },
+      "-Nzay6DjmepLNnytDpPa": {
+        "corriente": 3.6214131890122214,
+        "timestamp": "6/4/2024, 11:56:33 PM",
+        "voltage": 70.6643272757165
+      },
+      "-Nzay7rg5yyXx61xTdHj": {
+        "corriente": 5.515812980882795,
+        "timestamp": "6/4/2024, 11:56:40 PM",
+        "voltage": 40.35450444203572
+      },
+      "-NzayHWbH8nH5D3AtnfZ": {
+        "corriente": 7.587418467519109,
+        "timestamp": "6/4/2024, 11:57:19 PM",
+        "voltage": 74.91223833206998
+      },
+      "-NzayJZJY1tP36J28_Q8": {
+        "corriente": 0.9407624287379335,
+        "timestamp": "6/4/2024, 11:57:27 PM",
+        "voltage": 78.50973740688985
+      },
+      "-NzayN9I6vXAEOPiD1wT": {
+        "corriente": 3.0267642604571843,
+        "timestamp": "6/4/2024, 11:57:42 PM",
+        "voltage": 88.10157082672183
+      },
+      "-NzbGZy2ru1MMHHYMuBD": {
+        "corriente": 6.762155220252815,
+        "timestamp": "6/5/2024, 1:21:35 AM",
+        "voltage": 23.65401594760379
+      }
+    },
+    "tap": 2
+  },
+  "palco:007": {
+    "estado_pago": false,
+    "estado_servicio": true,
+    "lecturas_ambientales": {
+      "-Nzay4OHK-uw5RY6AJcQ": {
+        "co2": 53404,
+        "presencia": true,
+        "temperatura": 17.859005467327194,
+        "timestamp": "6/4/2024, 11:56:25 PM"
+      },
+      "-Nzay6DnF3VdMWNKARk3": {
+        "co2": 35858,
+        "presencia": true,
+        "temperatura": 15.171741893617641,
+        "timestamp": "6/4/2024, 11:56:33 PM"
+      },
+      "-Nzay7rjcBT11qit1QYS": {
+        "co2": 35477,
+        "presencia": false,
+        "temperatura": 40.31956546881808,
+        "timestamp": "6/4/2024, 11:56:40 PM"
+      },
+      "-NzayHWc-ErW4XDXyM4i": {
+        "co2": 50750,
+        "presencia": false,
+        "temperatura": 24.593380320248304,
+        "timestamp": "6/4/2024, 11:57:19 PM"
+      },
+      "-NzayJZKTo7_vjVkmBn4": {
+        "co2": 38207,
+        "presencia": false,
+        "temperatura": 17.849326152424826,
+        "timestamp": "6/4/2024, 11:57:27 PM"
+      },
+      "-NzayN9KloWuWYaU-QrW": {
+        "co2": 13927,
+        "presencia": true,
+        "temperatura": 8.520498924582942,
+        "timestamp": "6/4/2024, 11:57:42 PM"
+      },
+      "-NzbGZy7hXLnFx-rauAs": {
+        "co2": 3956,
+        "presencia": true,
+        "temperatura": 15.89536756978729,
+        "timestamp": "6/5/2024, 1:21:35 AM"
+      }
+    },
+    "lecturas_electricas": {
+      "-Nzay4OI8ekr97aOuVvW": {
+        "corriente": 6.7261499152168325,
+        "timestamp": "6/4/2024, 11:56:25 PM",
+        "voltage": 46.781681164761444
+      },
+      "-Nzay6DnF3VdMWNKARk4": {
+        "corriente": 8.570625976387046,
+        "timestamp": "6/4/2024, 11:56:33 PM",
+        "voltage": 2.258907460889703
+      },
+      "-Nzay7rk9EIwU0fZyRz9": {
+        "corriente": 4.5137805091930865,
+        "timestamp": "6/4/2024, 11:56:40 PM",
+        "voltage": 148.5548293647263
+      },
+      "-NzayHWe4YCAVzDNmKNy": {
+        "corriente": 1.4175964704247068,
+        "timestamp": "6/4/2024, 11:57:19 PM",
+        "voltage": 14.283830080393233
+      },
+      "-NzayJZLs2wKYlBbhaVU": {
+        "corriente": 9.415956404370544,
+        "timestamp": "6/4/2024, 11:57:27 PM",
+        "voltage": 137.39231673651315
+      },
+      "-NzayN9MzobxlwhUS8R-": {
+        "corriente": 5.493288076526932,
+        "timestamp": "6/4/2024, 11:57:42 PM",
+        "voltage": 136.54276951256514
+      },
+      "-NzbGZy9_Ystyqjqflko": {
+        "corriente": 2.114905398648377,
+        "timestamp": "6/5/2024, 1:21:35 AM",
+        "voltage": 59.608294002858074
+      }
+    },
+    "tap": 2
+  },
+  "palco:008": {
+    "estado_pago": true,
+    "estado_servicio": true,
+    "lecturas_ambientales": {
+      "-Nzay4OLXXnNAZMv5NPU": {
+        "co2": 32981,
+        "presencia": true,
+        "temperatura": 34.95267361304645,
+        "timestamp": "6/4/2024, 11:56:25 PM"
+      },
+      "-Nzay6Dr8WUSE9X2CNGz": {
+        "co2": 37205,
+        "presencia": true,
+        "temperatura": 36.81745506684202,
+        "timestamp": "6/4/2024, 11:56:33 PM"
+      },
+      "-Nzay7rn7Wm8DeFSGsqt": {
+        "co2": 36263,
+        "presencia": true,
+        "temperatura": 6.311638871519143,
+        "timestamp": "6/4/2024, 11:56:40 PM"
+      },
+      "-NzayHWgMbTFFVkOlPt9": {
+        "co2": 13830,
+        "presencia": false,
+        "temperatura": 28.58782936760258,
+        "timestamp": "6/4/2024, 11:57:19 PM"
+      },
+      "-NzayJZOw_ZOfD5AFwke": {
+        "co2": 33631,
+        "presencia": false,
+        "temperatura": 28.84004448049864,
+        "timestamp": "6/4/2024, 11:57:27 PM"
+      },
+      "-NzayN9PPP82HNILOOli": {
+        "co2": 32364,
+        "presencia": true,
+        "temperatura": 28.01433882051886,
+        "timestamp": "6/4/2024, 11:57:42 PM"
+      },
+      "-NzbGZyE-WodJ5oDyIYV": {
+        "co2": 14383,
+        "presencia": false,
+        "temperatura": 33.06480847195987,
+        "timestamp": "6/5/2024, 1:21:35 AM"
+      }
+    },
+    "lecturas_electricas": {
+      "-Nzay4OLXXnNAZMv5NPV": {
+        "corriente": 7.189273618031747,
+        "timestamp": "6/4/2024, 11:56:25 PM",
+        "voltage": 98.26407909281919
+      },
+      "-Nzay6Dr8WUSE9X2CNH-": {
+        "corriente": 1.909639695356451,
+        "timestamp": "6/4/2024, 11:56:33 PM",
+        "voltage": 135.92451417296985
+      },
+      "-Nzay7rn7Wm8DeFSGsqu": {
+        "corriente": 1.1602411102478083,
+        "timestamp": "6/4/2024, 11:56:40 PM",
+        "voltage": 113.54278860516726
+      },
+      "-NzayHWgMbTFFVkOlPtA": {
+        "corriente": 2.1600910139248786,
+        "timestamp": "6/4/2024, 11:57:19 PM",
+        "voltage": 30.452710272655146
+      },
+      "-NzayJZOw_ZOfD5AFwkf": {
+        "corriente": 2.9874130499872398,
+        "timestamp": "6/4/2024, 11:57:27 PM",
+        "voltage": 76.00258646793648
+      },
+      "-NzayN9PPP82HNILOOlj": {
+        "corriente": 4.622052928985012,
+        "timestamp": "6/4/2024, 11:57:42 PM",
+        "voltage": 34.728925963804926
+      },
+      "-NzbGZyFjHF65mrPIyiS": {
+        "corriente": 5.103421891314619,
+        "timestamp": "6/5/2024, 1:21:35 AM",
+        "voltage": 111.26273136978318
+      }
+    },
+    "tap": 2
+  },
+  "palco:009": {
+    "estado_pago": true,
+    "estado_servicio": false,
+    "lecturas_ambientales": {
+      "-Nzay4ON8J_Qp5_YO3ZU": {
+        "co2": 10597,
+        "presencia": true,
+        "temperatura": 27.15355756363833,
+        "timestamp": "6/4/2024, 11:56:25 PM"
+      },
+      "-Nzay6Dulq00ETj3cC8z": {
+        "co2": 11567,
+        "presencia": true,
+        "temperatura": 14.778006285634193,
+        "timestamp": "6/4/2024, 11:56:33 PM"
+      },
+      "-Nzay7rqQVE8ceAM_BuS": {
+        "co2": 29302,
+        "presencia": true,
+        "temperatura": 13.535866326739187,
+        "timestamp": "6/4/2024, 11:56:40 PM"
+      },
+      "-NzayHWi1O7309hCjPXA": {
+        "co2": 48303,
+        "presencia": false,
+        "temperatura": 29.99693185602864,
+        "timestamp": "6/4/2024, 11:57:19 PM"
+      },
+      "-NzayJZRxlQ2-E4bml22": {
+        "co2": 9636,
+        "presencia": true,
+        "temperatura": 22.842845100388875,
+        "timestamp": "6/4/2024, 11:57:27 PM"
+      },
+      "-NzayN9RzUxBnHzPCP0A": {
+        "co2": 40481,
+        "presencia": false,
+        "temperatura": 49.39954374608182,
+        "timestamp": "6/4/2024, 11:57:42 PM"
+      },
+      "-NzbGZyIjd22Bn-p9Yra": {
+        "co2": 35742,
+        "presencia": false,
+        "temperatura": 47.69959170838,
+        "timestamp": "6/5/2024, 1:21:35 AM"
+      }
+    },
+    "lecturas_electricas": {
+      "-Nzay4OO8OoKXQQ4db-K": {
+        "corriente": 1.2807336038036454,
+        "timestamp": "6/4/2024, 11:56:25 PM",
+        "voltage": 109.7770911482092
+      },
+      "-Nzay6Dwl5bl6NMRnDvx": {
+        "corriente": 0.45852028873113904,
+        "timestamp": "6/4/2024, 11:56:33 PM",
+        "voltage": 69.45003582847889
+      },
+      "-Nzay7rrDNkHGoy5ShMx": {
+        "corriente": 4.0573946800099,
+        "timestamp": "6/4/2024, 11:56:40 PM",
+        "voltage": 43.8580116334768
+      },
+      "-NzayHWi1O7309hCjPXB": {
+        "corriente": 3.4933597834532892,
+        "timestamp": "6/4/2024, 11:57:19 PM",
+        "voltage": 68.12215489256555
+      },
+      "-NzayJZSwmExyZZtbKX1": {
+        "corriente": 9.856545428585854,
+        "timestamp": "6/4/2024, 11:57:27 PM",
+        "voltage": 27.33595614826242
+      },
+      "-NzayN9RzUxBnHzPCP0B": {
+        "corriente": 5.454955057026247,
+        "timestamp": "6/4/2024, 11:57:42 PM",
+        "voltage": 61.38486312295883
+      },
+      "-NzbGZyJ9efSakCLPmq0": {
+        "corriente": 6.020669138105594,
+        "timestamp": "6/5/2024, 1:21:35 AM",
+        "voltage": 127.93522270326939
+      }
+    },
+    "tap": 3
+  },
+  "palco:010": {
+    "estado_pago": true,
+    "estado_servicio": false,
+    "lecturas_ambientales": {
+      "-Nzay4OQ5ZWBbz6078Xv": {
+        "co2": 17983,
+        "presencia": true,
+        "temperatura": 13.689339784610244,
+        "timestamp": "6/4/2024, 11:56:25 PM"
+      },
+      "-Nzay6E0-iv-gK1W332Z": {
+        "co2": 12654,
+        "presencia": true,
+        "temperatura": 11.315475701882105,
+        "timestamp": "6/4/2024, 11:56:33 PM"
+      },
+      "-Nzay7rvvVxrjf5RMwwM": {
+        "co2": 43920,
+        "presencia": false,
+        "temperatura": 34.6166337761168,
+        "timestamp": "6/4/2024, 11:56:40 PM"
+      },
+      "-NzayHWlK9QnMQS_oWvB": {
+        "co2": 14676,
+        "presencia": false,
+        "temperatura": 30.144676861621868,
+        "timestamp": "6/4/2024, 11:57:19 PM"
+      },
+      "-NzayJZUOCRHlh8F0XfI": {
+        "co2": 4630,
+        "presencia": true,
+        "temperatura": 37.04641245884448,
+        "timestamp": "6/4/2024, 11:57:27 PM"
+      },
+      "-NzayN9TaoCZ-dhJIIf-": {
+        "co2": 1769,
+        "presencia": true,
+        "temperatura": 30.35031703818092,
+        "timestamp": "6/4/2024, 11:57:42 PM"
+      },
+      "-NzbGZyNsgptZDkP5428": {
+        "co2": 41637,
+        "presencia": false,
+        "temperatura": 11.717464286470868,
+        "timestamp": "6/5/2024, 1:21:35 AM"
+      }
+    },
+    "lecturas_electricas": {
+      "-Nzay4OQ5ZWBbz6078Xw": {
+        "corriente": 1.3989990525427842,
+        "timestamp": "6/4/2024, 11:56:25 PM",
+        "voltage": 9.038194585841996
+      },
+      "-Nzay6E1lMjpCvTep7RC": {
+        "corriente": 9.44544186306132,
+        "timestamp": "6/4/2024, 11:56:33 PM",
+        "voltage": 121.73085424450778
+      },
+      "-Nzay7rx4p6HPXESdTOR": {
+        "corriente": 6.865130685073135,
+        "timestamp": "6/4/2024, 11:56:40 PM",
+        "voltage": 13.45970576530091
+      },
+      "-NzayHWmDd1kbvcCcGAm": {
+        "corriente": 4.981505692925319,
+        "timestamp": "6/4/2024, 11:57:19 PM",
+        "voltage": 48.43447234118445
+      },
+      "-NzayJZUOCRHlh8F0XfJ": {
+        "corriente": 0.0861448085714267,
+        "timestamp": "6/4/2024, 11:57:27 PM",
+        "voltage": 6.635123544289501
+      },
+      "-NzayN9UAdQd6AOeSY04": {
+        "corriente": 7.938262092782615,
+        "timestamp": "6/4/2024, 11:57:42 PM",
+        "voltage": 100.99481271909599
+      },
+      "-NzbGZyO7DWjN-5zK6CO": {
+        "corriente": 0.0246749690320458,
+        "timestamp": "6/5/2024, 1:21:35 AM",
+        "voltage": 103.82996876887707
+      }
+    },
+    "tap": 3
+  }
+}

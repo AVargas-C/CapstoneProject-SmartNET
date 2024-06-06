@@ -15,6 +15,8 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../../components/css/sidebar_styles.css">
+  <link rel="stylesheet" href="./grid_styles.css">
+  <link rel="stylesheet" href="./buttons.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Boxicons Icons -->
   
   <!-- Open Graph Tags -->
@@ -41,7 +43,7 @@
         </a>
       </li>
       
-      <li class="list-item   active">
+      <li class="list-item">
         <a href="../2_stadium_map/stadium_map.html">
           <i class='bx bxs-castle'></i> <!--Icon-->
           <span class="link-name" style="--i:2;">Estadio</span>
@@ -55,47 +57,115 @@
         </a>
       </li>
       
-      <li class="list-item">
+      <li class="list-item active">
         <a href="../4_historic_live/historic_live.html">
-          <i class='bx bx-pie-chart-alt-2' ></i> <!--Icon-->
+          <i class='bx bx-pie-chart-alt-2'></i> <!--Icon-->
           <span class="link-name" style="--i:4;">Histórico Live</span>
         </a>
       </li>
 
       <li class="list-item">
         <a href="../5_analisis/analisis.html">
-          <i class='bx bx-folder' ></i> <!--Icon-->
+          <i class='bx bx-folder'></i> <!--Icon-->
           <span class="link-name" style="--i:5;">Análisis</span>
         </a>
       </li>
 
       <li class="list-item">
         <a href="../6_treasury/treasury.html">
-          <i class='bx bx-cart' ></i> <!--Icon-->
+          <i class='bx bx-cart'></i> <!--Icon-->
           <span class="link-name" style="--i:6;">Tesorería</span>
         </a>
       </li>
 
       <li class="list-item">
         <a href="../7_users/users.html">
-          <i class='bx bx-heart' ></i> <!--Icon-->
+          <i class='bx bx-heart'></i> <!--Icon-->
           <span class="link-name" style="--i:7;">Usuarios</span>
         </a>
       </li>
 
       <li class="list-item">
         <a href="../8_settings/settings.html">
-          <i class='bx bx-cog' ></i> <!--Icon-->
+          <i class='bx bx-cog'></i> <!--Icon-->
           <span class="link-name" style="--i:8;">Ajustes</span>
         </a>
       </li>
     </ul>
   </nav>
   
-  <!-- Content -->
-
-
+  <div class="main--content">
+    <div class="header--wrapper">
+      <div class="header--title">
+        <h2>Histórico Live</h2>
+      </div>
+      <div class="user--info">
+        <div class="search--box">
+          <i class='bx bx-search'></i>
+          <input type="text" placeholder="Search"/>
+        </div>
+        <img src="../../public/assets/images/IMG_5542.JPG" alt="">
+      </div>
+    </div>
+    
+    <!-- Content -->
+    <div class="button--wrapper">
+      <button class="header-button" id="button1">All Entries</button>
+      <button class="header-button" id="button2">Last Entry</button>
+      <button class="header-button" id="button3">Last 20 Entries</button>
+    </div>
+    
+    <!-- Content -->
+    <div class="grid-container">
+      <!-- Headers -->
+      <div class="grid-header">Palco</div>
+      <div class="grid-header">Tap</div>
+      <div class="grid-header">Estado de Pago</div>
+      <div class="grid-header">Estado de Servicio</div>
+      <div class="grid-header">Lecturas Ambientales</div>
+      <div class="grid-header">Lecturas Eléctricas</div>
+      <!-- Dynamic content will be loaded here -->
+    </div>
+  
+  </div> <!-- Main Container Close Tag -->
+  
   <!-- JavaScript -->
+  <script>
+    // Function to dynamically load a script
+    function loadScript(scriptSrc) {
+      const scriptContainer = document.getElementById('script-container');
+      // Remove any existing script tags
+      while (scriptContainer.firstChild) {
+        scriptContainer.removeChild(scriptContainer.firstChild);
+      }
+      
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.src = `${scriptSrc}?t=${new Date().getTime()}`; // Add timestamp to avoid caching
+      scriptContainer.appendChild(script);
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('button1').addEventListener('click', function() {
+      loadScript('./historic_all.js');
+    });
+
+    document.getElementById('button2').addEventListener('click', function() {
+      loadScript('./historic_last.js');
+    });
+
+    document.getElementById('button3').addEventListener('click', function() {
+      loadScript('./historic_last20.js');
+    });
+
+    // Load default script
+    document.addEventListener('DOMContentLoaded', function() {
+      loadScript('./historic_last.js');
+    });
+  </script>
+  
+  <div id="script-container"></div>
+  
   <script src="../../components/js/sidebar_scritp.js"></script>
 </body>
 </html>

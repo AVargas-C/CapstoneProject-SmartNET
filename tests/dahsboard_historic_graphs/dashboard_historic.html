@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Dynamic Searchable A11y Accordion Example</title>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="./dist/css/a11yAccordion.min.css" />
+<style>
+  body { background: #fafafa; }
+  .search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .search-container input {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .chart-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .chart-container {
+    width: 100%;
+    height: 300px;
+  }
+  .a11yAccordion .a11yAccordionItem {
+    width: 90%;
+  }
+</style>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+</script>
+</head>
+<body>
+  <div class="container">
+    <h1>Dynamic Searchable A11y Accordion Example</h1>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search...">
+    </div>
+    <ul id="accordion1" class="a11yAccordion a11yAccordion-light">
+      <!-- Accordion items will be injected here by JavaScript -->
+    </ul>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <script src="dist/js/a11yAccordion.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

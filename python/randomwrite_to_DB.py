@@ -104,8 +104,8 @@ def generate_random_data(number_of_loops, number_of_palcos, corriente_min_value,
 
 #------------- CODE USAGE --------------
 generate_random_data(
-    number_of_loops=20, 
-    number_of_palcos=1, 
+    number_of_loops=10, 
+    number_of_palcos=30, 
     corriente_min_value=0.0,
     corriente_max_value=10.0, 
     voltage_min_value=0.0,

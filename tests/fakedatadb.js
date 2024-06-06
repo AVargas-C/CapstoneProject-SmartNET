@@ -1,7 +1,7 @@
-const { initializeApp } = require('firebase/app');
-const { getDatabase, ref, set, push } = require('firebase/database');
+const { initializeApp, deleteApp } = require('firebase/app');
+const { getDatabase, ref, set, push, child } = require('firebase/database');
 
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCnfqYtDnf95RXQvsele6IPmZtUpNhpSPQ",
     authDomain: "reto-estadioazteca.firebaseapp.com",
@@ -9,85 +9,81 @@ const firebaseConfig = {
     storageBucket: "reto-estadioazteca.appspot.com",
     messagingSenderId: "378312513144",
     appId: "1:378312513144:web:1c80ba54d21c63529c3f8d"
-  };
-  
+};
 
-// Inicializar Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-/*---------------------------------------------------------------------------------------------*/
-// Función para generar un número aleatorio entre min y max
-function getRandomValue(min, max) {
-    return Math.random() * (max - min) + min;
+function getTapNumber(palcoNumber) {
+    return Math.floor((palcoNumber - 1) / 4) + 1;
 }
 
-// Función para generar una marca de tiempo
-function getCurrentTimestamp() {
+function getMexicoCityTime() {
     return new Date().toLocaleString('en-US', { timeZone: 'America/Mexico_City' });
 }
 
-// Actualizar los valores cada 5 segundos para cada tap y palco
-const taps = Array.from({ length: 20 }, (_, i) => `${String(i + 1).padStart(2, '0')}`);
-const palcosPerTap = 4;
+function updateDatabase(palco, corriente, voltage, co2, presencia, temperatura, estadoPago, estadoServicio) {
+    const palcoNumber = parseInt(palco.split(':')[1]);
+    const tapNumber = getTapNumber(palcoNumber);
 
-taps.forEach((tap, index) => {
-    const startPalco = index * palcosPerTap + 1;
-    const endPalco = startPalco + palcosPerTap;
+    // Update tap, estado_pago, estado_servicio
+    set(ref(database, `${palco}/tap`), tapNumber);
+    set(ref(database, `${palco}/estado_pago`), estadoPago);
+    set(ref(database, `${palco}/estado_servicio`), estadoServicio);
 
-    for (let palcoNum = startPalco; palcoNum < endPalco; palcoNum++) {
-        const palco = String(palcoNum).padStart(2, '0');
+    // Add new readings to lecturas_ambientales
+    const ambientalesRef = push(child(ref(database), `${palco}/lecturas_ambientales`));
+    set(ambientalesRef, {
+        co2: co2,
+        temperatura: temperatura,
+        presencia: presencia,
+        timestamp: getMexicoCityTime()
+    });
 
-        setInterval(() => {
-            const values = {
-                voltage: getRandomValue(100, 150),
-                current: getRandomValue(0, 20),
-                timestamp: getCurrentTimestamp(),
-                estado_servicio: Math.random() < 0.5 ? "activo" : "inactivo",
-                estado_pago: Math.random() < 0.5 ? "pagado" : "no pagado",
-                lecturas_ambientales: {
-                    co2: Math.floor(Math.random() * 100001), // Valor aleatorio entre 0 y 100,000
-                    temperatura: getRandomValue(0, 50), // Valor aleatorio entre 0 y 50
-                    presencia: Math.random() < 0.5 ? "detectada" : "no detectada" // Aleatoriamente detectada o no detectada
-                }
-            };
+    // Add new readings to lecturas_electricas
+    const electricasRef = push(child(ref(database), `${palco}/lecturas_electricas`));
+    set(electricasRef, {
+        voltage: voltage,
+        corriente: corriente,
+        timestamp: getMexicoCityTime()
+    });
 
-            const readingsRef = ref(database, `tap:${tap}/palco:${palco}/lecturas_electricas`);
-            push(readingsRef, {
-                voltaje: values.voltage,
-                corriente: values.current,
-                timestamp: values.timestamp
-            }).then(() => {
-                console.log(`Valores actualizados en Tap${tap}/Palco${palco}/lecturas_electricas: `, values);
-            }).catch((error) => {
-                console.error(`Error actualizando los valores en Tap${tap}/Palco${palco}/lecturas_electricas: `, error);
-            });
+    console.log(`Data successfully written to Firebase Realtime Database:
+    palco: ${palco}
+    tap = ${tapNumber}
+    corriente = ${corriente}
+    voltage = ${voltage}
+    co2 = ${co2}
+    presencia = ${presencia}
+    temperatura = ${temperatura}
+    estado_pago = ${estadoPago}
+    estado_servicio = ${estadoServicio}
+    `);
+}
 
-            const serviceStatusRef = ref(database, `tap:${tap}/palco:${palco}/estado_servicio`);
-            set(serviceStatusRef, values.estado_servicio).then(() => {
-                console.log(`Estado de servicio actualizado en Tap${tap}/Palco${palco}/estado_servicio: `, values.estado_servicio);
-            }).catch((error) => {
-                console.error(`Error actualizando el estado de servicio en Tap${tap}/Palco${palco}/estado_servicio: `, error);
-            });
+async function generateRandomData(numberOfLoops, numberOfPalcos, corrienteMinValue, corrienteMaxValue, voltageMinValue, voltageMaxValue, co2MinValue, co2MaxValue, presenciaValue, temperaturaMinValue, temperaturaMaxValue, estadoPagoValue, estadoServicioValue) {
+    for (let i = 0; i < numberOfLoops; i++) {
+        for (let j = 1; j <= numberOfPalcos; j++) {
+            const palco = `palco:${String(j).padStart(3, '0')}`;
+            const corriente = Math.random() * (corrienteMaxValue - corrienteMinValue) + corrienteMinValue;
+            const voltage = Math.random() * (voltageMaxValue - voltageMinValue) + voltageMinValue;
+            const co2 = Math.floor(Math.random() * (co2MaxValue - co2MinValue + 1) + co2MinValue);
+            const temperatura = Math.random() * (temperaturaMaxValue - temperaturaMinValue) + temperaturaMinValue;
+            const presencia = Math.random() < 0.5;
+            const estadoPago = Math.random() < 0.5;
+            const estadoServicio = Math.random() < 0.5;
 
-            const paymentStatusRef = ref(database, `tap:${tap}/palco:${palco}/estado_pago`);
-            set(paymentStatusRef, values.estado_pago).then(() => {
-                console.log(`Estado de pago actualizado en Tap${tap}/Palco${palco}/estado_pago: `, values.estado_pago);
-            }).catch((error) => {
-                console.error(`Error actualizando el estado de pago en Tap${tap}/Palco${palco}/estado_pago: `, error);
-            });
-
-            const environmentalReadingsRef = ref(database, `tap:${tap}/palco:${palco}/lecturas_ambientales`);
-            push(environmentalReadingsRef, {
-                co2: values.lecturas_ambientales.co2,
-                temperatura: values.lecturas_ambientales.temperatura,
-                presencia: values.lecturas_ambientales.presencia,
-                timestamp: values.timestamp
-            }).then(() => {
-                console.log(`Valores de lecturas ambientales actualizados en Tap${tap}/Palco${palco}/lecturas_ambientales: `, values.lecturas_ambientales);
-            }).catch((error) => {
-                console.error(`Error actualizando los valores de lecturas ambientales en Tap${tap}/Palco${palco}/lecturas_ambientales: `, error);
-            });
-        }, 5000);
+            updateDatabase(palco, corriente, voltage, co2, presencia, temperatura, estadoPago, estadoServicio);
+        }
     }
-});
+    console.log('Random data generation complete.');
+    // Add a short delay before closing the app to ensure all writes are completed
+    setTimeout(async () => {
+        await deleteApp(app); // Properly close the Firebase app
+        console.log('Firebase app closed.');
+    }, 5000);
+}
+
+// Usage example:
+generateRandomData(1, 10, 0.0, 10.0, 0.0, 150.0, 0, 55000, '1', 0.0, 50.0, '1', '1');

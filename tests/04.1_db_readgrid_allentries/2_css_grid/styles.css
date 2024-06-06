@@ -54,7 +54,7 @@ body, html {
 .boolean-false {
     background-color: red;
     color: white;
-    padding: 5px;
+    padding: 1px;
     border-radius: 5px;
 }
 

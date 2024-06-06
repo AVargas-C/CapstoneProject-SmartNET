@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #1d2634;
+  background-size: cover;
+  background-position: center;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 100%;
+  background: transparent;
+  backdrop-filter: blur(40px);
+  border-right: 2px solid rgba(255, 255, 255, .2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  padding: 6px 14px;
+  transition: .5s;
+  z-index: 10; /* Ensure the sidebar is above other content */
+}
+
+.sidebar.active {
+  width: 260px;
+  z-index: 1000; /* Higher z-index when expanded */
+}
+
+.sidebar .logo-menu {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+}
+
+.sidebar .logo-menu .logo {
+  font-size: 25px;
+  color: #fff;
+  pointer-events: none;
+  opacity: 0;
+  transition: .3s;
+}
+
+.sidebar.active .logo-menu .logo {
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+.sidebar .logo-menu .toggle-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  transition: .5;
+}
+
+.sidebar.active .logo-menu .toggle-btn {
+  left: 90%;
+}
+
+.sidebar .list {
+  margin-top: 10px;
+}
+
+.list .list-item {
+  list-style: none;
+  width: 100%;
+  height: 50px;
+  margin: 5px 0;
+  line-height: 50px;
+}
+
+.list .list-item a {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: .5;
+}
+
+.list .list-item.active a, 
+.list .list-item a:hover {
+  background: rgba(255, 255, 255, .2);
+}
+
+.list .list-item a i {
+  min-width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.sidebar .link-name {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+
+.sidebar.active .link-name {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: calc(.1s * var(--i));
+}
+
+
+/* main body section */
+.main--content {
+  position: relative;
+  margin-left: 80px; /* Margin when sidebar is expanded */
+  padding: 1rem;
+
+}
+
+.header--wrapper img{
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.header--wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 2rem;
+  margin-bottom: 1rem;
+}
+
+.header--title {
+  color: rgba(113, 99, 186, 255);
+}
+
+.user--info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search--box {
+  background: rgb(237, 237, 237);
+  border-radius: 15px;
+  color: rgba(113, 99, 186, 255);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px;
+}
+
+.search--box input {
+  background: transparent;
+  padding: 10px;
+  border: none;   /* Remove the border */
+  outline: none;  /* Remove the focus outline */
+  color: #fff;    /* Ensure the text color is visible */
+}
+
+.search--box i {
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.5 ease-out;
+}
+
+.search--box i:hover {
+  transform: scale(1.2);
+}

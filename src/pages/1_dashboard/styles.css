@@ -9,7 +9,7 @@
 
 body {
   min-height: 100vh;
-  background: url('../../assets/images/estadio_2.jpg') no-repeat;
+  background-color: #1d2634;
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Make the background fixed */
@@ -126,30 +126,32 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 10% 10% 10% 10% 28% 29%; /* Adjust widths as needed */
+  grid-template-columns: 10% 10% 10% 10% 30% 30%; /* Adjust widths as needed */
   gap: 1px; /* This creates the grid lines */
   background-color: transparent; /* Make grid background transparent */
   flex-grow: 1;
   padding: 10px;
-  margin-left: 40px;
+  margin-left: 70px;
+  margin-right: 40px;
+  margin-top: 40px;
   position: relative; /* Ensure it is positioned correctly */
   z-index: 1; /* Ensure grid is below the sidebar */
-  border-radius: 10px; /* Add rounded edges to the grid */
-  border: 1px solid white; /* White border for grid lines */
+  border-radius: 30px; /* Add rounded edges to the grid */
   width: calc(90% - 5vw); /* Reduce overall width */
   height: auto; /* Let height adjust to content */
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  background: rgba(255, 255, 255, 0.05);
+  background-color: #263043;
 }
 
-.grid-header {;
+.grid-header {
   color: white;
-  padding: 10px;
+  padding: 0px;
   text-align: center;
   position: sticky;
   top: 0;
   z-index: 10;
   font-size: 20px;
+  backdrop-filter: blur(20px);
 }
 
 .grid-item {
@@ -161,8 +163,8 @@ body {
 }
 
 .grid-container > div {
-  border-bottom: 1px solid white; /* Change grid lines color to white */
-  border-right: 1px solid white; /* Change grid lines color to white */
+  border-bottom: 3px solid #3e4e6d; /* Change grid lines color to white */
+  border-right: 3px solid #3e4e6d; /* Change grid lines color to white */
 }
 
 .grid-header:last-child, .grid-item:last-child {
@@ -199,8 +201,9 @@ body {
   width: 100%;
   max-width: 250px;
   font-family: "Roboto", sans-serif;
-  font-size: 32px;
-  color: #004033;
+  font-size: 30px;
+  color: #ffffff; /*text color*/
+  transform: scale(1);
 }
 
 .gauge__body {
@@ -229,7 +232,7 @@ body {
 .gauge__cover {
   width: 75%;
   height: 150%;
-  background: #ffffff;
+  background-color: #263043;
   border-radius: 50%;
   position: absolute;
   top: 25%;
