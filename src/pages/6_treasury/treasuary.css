@@ -52,7 +52,7 @@ button:hover {
   left: 50%;
   width: 400px;
   height: 400px;
-  background-color: white;
+  background: #F0F0F0;
   border: 2px solid rgba(255, 255, 255, .5);
   border-radius: 20px;
   backdrop-filter: blur(20px);
@@ -220,4 +220,19 @@ button:hover {
 
 .login-register p a:hover {
   text-decoration: underline;
+}
+
+/* Add this to your existing CSS */
+.comprobante-btn {
+  padding: 5px 10px;
+  background-color: #F0F0F0;
+  color: #1B262C;
+  border: 1px solid #1B262C;
+  border-radius: 5px;
+  cursor: default; /* No pointer events */
+}
+
+.comprobante-btn:hover {
+  background-color: #1B262C;
+  color: #F0F0F0;
 }

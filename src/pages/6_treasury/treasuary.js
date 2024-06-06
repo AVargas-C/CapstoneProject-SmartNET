@@ -11,38 +11,37 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const wrapper = document.querySelector('.wrapper');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
-const btnPopup = document.querySelector('.btnLogin-popup');
 const iconClose = document.querySelector('.icon-close');
 
-// Existing functionality to handle popup and form transitions
-registerLink.addEventListener('click', () => {
-  wrapper.classList.add('active');
-});
-
-loginLink.addEventListener('click', () => {
-  wrapper.classList.remove('active');
-});
-
-if (btnPopup) {
-  btnPopup.addEventListener('click', () => {
-    wrapper.classList.add('active-popup');
-  });
-}
-
+// Handle popup close button
 iconClose.addEventListener('click', () => {
   wrapper.classList.remove('active-popup');
 });
 
-// New functionality to handle login form submission and redirection
+// Handle login form submission and toggle estado_pago
 document.addEventListener("DOMContentLoaded", function () {
-  // Add event listener to the login form
   const loginForm = document.querySelector(".form-box.login form");
   loginForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    // Redirect to the dashboard page
-    window.location.href = "./pages/1_dashboard/dashboard.html";
+
+    // Get the current estado_pago value
+    const databaseRef = firebase.database().ref();
+    databaseRef.once('value', function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        const key = childSnapshot.key;
+        const data = childSnapshot.val();
+        const currentEstadoPago = data.estado_pago;
+
+        // Toggle the estado_pago value
+        databaseRef.child(key).update({
+          estado_pago: !currentEstadoPago
+        });
+      });
+
+      // Close the popup and refresh the page after toggling
+      wrapper.classList.remove('active-popup');
+      window.location.reload();
+    });
   });
 
   // Populate the grid with data from Firebase
@@ -62,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="grid-item">Transacción</div>
         <div class="grid-item">Descripción</div>
         <div class="grid-item">$1000</div>
-        <div class="grid-item">Comprobante</div>
+        <div class="grid-item"><button class="comprobante-btn">Comprobante</button></div>
         <div class="grid-item ${estadoPagoClass}">${estadoPago}</div>
         <div class="grid-item"><button class="actualizar-btn">Actualizar</button></div>
       `;
