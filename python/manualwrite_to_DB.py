@@ -61,9 +61,9 @@ def update_database(palco, corriente, voltage, co2, presencia, temperatura, esta
 
 #------------- CODE USAGE --------------
 update_database(
-    'palco:031', 
-    corriente=18.0, 
-    voltage=127.0, 
+    'palco:001', 
+    corriente=5, 
+    voltage=50.0, 
     co2=400, 
     presencia=True, 
     temperatura=22.5, 

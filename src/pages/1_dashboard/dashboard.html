@@ -36,7 +36,7 @@
     
     <!-- SideBar List -->
     <ul class="list">
-      <li class="list-item  active">
+      <li class="list-item active">
         <a href="../1_dashboard/dashboard.html">
           <i class='bx bx-grid-alt'></i> <!--Icon-->
           <span class="link-name" style="--i:1;">Dashboard</span>
@@ -126,10 +126,42 @@
        <div class="grid-header">Lecturas Eléctricas</div>
        <!-- Dynamic content will be loaded here -->
     </div>
+    
+    <!-- Popup HTML -->
+    <div class="wrapper">
+      <span class="icon-close">
+        <ion-icon name="close"></ion-icon>
+      </span>
+
+      <div class="form-box login">
+        <h2>Autentificar</h2>
+        <form action="#">
+          <div class="input-box">
+            <span class="icon">
+              <ion-icon name="mail"></ion-icon>
+            </span>
+            <input type="email" required>
+            <label>Email</label>
+          </div>
+          <div class="input-box">
+            <span class="icon">
+              <ion-icon name="lock-closed"></ion-icon>
+            </span>
+            <input type="password" required>
+            <label>Password</label>
+          </div>
+          <button type="submit" class="btn">Autentificar</button>
+        </form>
+      </div>
+    </div>
   </div>
   
   <!-- JavaScript -->
-  <script type="module" src="./app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="./app.js"></script>
   <script src="../../components/js/sidebar_scritp.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

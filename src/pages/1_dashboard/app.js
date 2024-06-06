@@ -1,20 +1,16 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
-
-// Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyCnfqYtDnf95RXQvsele6IPmZtUpNhpSPQ",
-    authDomain: "reto-estadioazteca.firebaseapp.com",
-    projectId: "reto-estadioazteca",
-    storageBucket: "reto-estadioazteca.appspot.com",
-    messagingSenderId: "378312513144",
-    appId: "1:378312513144:web:1c80ba54d21c63529c3f8d",
-    databaseURL: "https://reto-estadioazteca-default-rtdb.firebaseio.com"
-};
-
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+var firebaseConfig = {
+  apiKey: "AIzaSyCnfqYtDnf95RXQvsele6IPmZtUpNhpSPQ",
+  authDomain: "reto-estadioazteca.firebaseapp.com",
+  databaseURL: "https://reto-estadioazteca-default-rtdb.firebaseio.com",
+  projectId: "reto-estadioazteca",
+  storageBucket: "reto-estadioazteca.appspot.com",
+  messagingSenderId: "378312513144",
+  appId: "1:378312513144:web:1c80ba54d21c63529c3f8d"
+};
+firebase.initializeApp(firebaseConfig);
+
+const database = firebase.database();
 const container = document.querySelector('.grid-container');
 
 // Store the last values of the gauges
@@ -31,7 +27,7 @@ function toggleEstadoServicio(palcoId, currentState) {
     const newState = !currentState;
     const updates = {};
     updates[`/${palcoId}/estado_servicio`] = newState;
-    update(ref(database), updates);
+    firebase.database().ref().update(updates);
 }
 
 function createGauge(id) {
@@ -157,7 +153,7 @@ function populateGrid(data) {
                 <div class="grid-item estadoPago" id="estadoPago-${key}">${estadoPago}</div>
                 <div class="grid-item estadoServicio" id="estadoServicio-${key}">
                     ${applyBooleanStyle(estadoServicio)}<br>
-                    <button onclick="toggleEstadoServicio('${key}', ${estadoServicio})">Toggle</button>
+                    <button class="toggle-btn" data-palco-id="${key}" data-estado-servicio="${estadoServicio}">Toggle</button>
                 </div>
                 <div class="grid-item gauge-container" id="gauge-container-amb-${key}">
                     ${co2Gauge.outerHTML}
@@ -183,6 +179,17 @@ function populateGrid(data) {
             });
         }
     }
+
+    // Add event listeners to the new "Toggle" buttons
+    document.querySelectorAll('.toggle-btn').forEach(button => {
+      button.addEventListener('click', (event) => {
+        const palcoId = event.currentTarget.getAttribute('data-palco-id');
+        const currentState = event.currentTarget.getAttribute('data-estado-servicio') === 'true';
+        wrapper.classList.add('active-popup');
+        wrapper.setAttribute('data-palco-id', palcoId);
+        wrapper.setAttribute('data-current-state', currentState);
+      });
+    });
 }
 
 function updateExistingGauges(data) {
@@ -261,15 +268,26 @@ function updateExistingGauges(data) {
             if (estadoPagoElement) estadoPagoElement.innerHTML = estadoPago;
             if (estadoServicioElement) estadoServicioElement.innerHTML = `
                 ${applyBooleanStyle(estadoServicio)}<br>
-                <button onclick="toggleEstadoServicio('${key}', ${estadoServicio})">Conmutar</button>
+                <button class="toggle-btn" data-palco-id="${key}" data-estado-servicio="${estadoServicio}">Conmutar</button>
             `;
             if (lecturasAmbientalesElement) lecturasAmbientalesElement.innerHTML = lecturasAmbientales;
         }
     }
+
+    // Add event listeners to the new "Toggle" buttons
+    document.querySelectorAll('.toggle-btn').forEach(button => {
+      button.addEventListener('click', (event) => {
+        const palcoId = event.currentTarget.getAttribute('data-palco-id');
+        const currentState = event.currentTarget.getAttribute('data-estado-servicio') === 'true';
+        wrapper.classList.add('active-popup');
+        wrapper.setAttribute('data-palco-id', palcoId);
+        wrapper.setAttribute('data-current-state', currentState);
+      });
+    });
 }
 
-const dataRef = ref(database, '/');
-onValue(dataRef, (snapshot) => {
+const dataRef = firebase.database().ref('/');
+dataRef.on('value', (snapshot) => {
     const data = snapshot.val();
     if (data) {
         console.log('Data from Firebase:', data);  // Debugging line
@@ -283,6 +301,30 @@ onValue(dataRef, (snapshot) => {
     }
 }, (error) => {
     console.error('Error loading the data:', error);
+});
+
+// Handle popup close button
+const wrapper = document.querySelector('.wrapper');
+const iconClose = document.querySelector('.icon-close');
+iconClose.addEventListener('click', () => {
+  wrapper.classList.remove('active-popup');
+});
+
+// Handle login form submission and toggle estado_servicio
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.querySelector(".form-box.login form");
+  loginForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Get the current estado_servicio value
+    const palcoId = wrapper.getAttribute('data-palco-id');
+    const currentState = wrapper.getAttribute('data-current-state') === 'true';
+    toggleEstadoServicio(palcoId, currentState);
+
+    // Close the popup and refresh the page after toggling
+    wrapper.classList.remove('active-popup');
+    window.location.reload();
+  });
 });
 
 // Make toggleEstadoServicio globally accessible
