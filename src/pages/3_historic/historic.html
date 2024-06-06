@@ -12,13 +12,13 @@
   
   <!-- CSS Reset -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./dist/css/a11yAccordion.min.css" />
   
   <!-- Stylesheet -->
-    <!-- SideBar -->
   <link rel="stylesheet" href="../../components/css/sidebar_styles.css">
-    <!-- Buttons -->
-  <link rel="stylesheet" href="./buttons.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Boxicons Icons -->
+  <link rel="stylesheet" href="./buttons.css">
   
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Side Bar Menu with Grid">
@@ -26,7 +26,23 @@
   <meta property="og:image" content="path/to/image.jpg">
   <meta property="og:url" content="https://example.com">
   <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    .search-container {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .search-container input {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
 </head>
+
 <body>
   <!-- Navigation Panel Content -->
   <nav class="sidebar">
@@ -97,35 +113,41 @@
   <div class="main--content">
     <div class="header--wrapper">
       <div class="header--title">
-        <span>Primary</span>
-        <h2>Dashboard</h2>
+        <span>Datos</span>
+        <h2>Históricos</h2>
       </div>
       <div class="user--info">
         <div class="search--box">
         <i class='bx bx-search' ></i>
-        <input type="text" placeholder="Search"/>
+        <input type="text" id="searchInput" placeholder="Search...">
         </div>
         <img src="../../public/assets/images/IMG_5542.JPG" alt="">
       </div>
     </div>
     
     <!-- Content -->
+    <!-- Buttons -->
     <div class="button--wrapper">
       <button class="header-button" id="button1">All Entries</button>
       <button class="header-button" id="button2">Last Entry</button>
       <button class="header-button" id="button3">Last 20 Entries</button>
     </div>
-    
-    <!-- Content -->
 
-  
-  </div> <!-- Main Container Close Tag -->
-  
+    <div class="container">
+      <ul id="accordion1" class="a11yAccordion a11yAccordion-light">
+        <!-- Accordion items will be injected here by JavaScript -->
+      </ul>
+    </div>
+
+
   <!-- JavaScript -->
-  <script></script>
-  
-  <div id="script-container"></div>
-  
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <script src="dist/js/a11yAccordion.js"></script>
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <!-- Firebase Realtime Database SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="app.js"></script>
   <script src="../../components/js/sidebar_scritp.js"></script>
 </body>
 </html>

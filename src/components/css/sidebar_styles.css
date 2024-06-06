@@ -177,7 +177,7 @@ body {
   padding: 10px;
   border: none;   /* Remove the border */
   outline: none;  /* Remove the focus outline */
-  color: #fff;    /* Ensure the text color is visible */
+  color: black;    /* Ensure the text color is visible */
 }
 
 .search--box i {
