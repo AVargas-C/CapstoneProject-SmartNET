@@ -129,19 +129,8 @@ body {
   padding: 1rem;
 }
 
-
-
-
-
 /* header wrapper */
-.header--wrapper img{
-  width: 60px;
-  height: 60px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.header--wrapper{
+.header--wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -149,7 +138,18 @@ body {
   background: #fff;
   border-radius: 10px;
   padding: 10px 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+.header--wrapper img {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border-radius: 50%;
 }
 
 .header--title {
@@ -175,9 +175,9 @@ body {
 .search--box input {
   background: transparent;
   padding: 10px;
-  border: none;   /* Remove the border */
-  outline: none;  /* Remove the focus outline */
-  color: black;    /* Ensure the text color is visible */
+  border: none; /* Remove the border */
+  outline: none; /* Remove the focus outline */
+  color: black; /* Ensure the text color is visible */
 }
 
 .search--box i {
