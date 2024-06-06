@@ -1,0 +1,65 @@
+.main-container {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+.dedicatoria {
+  margin-bottom: 20px;
+}
+
+.card-wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: auto;
+  height: 470px;
+  backdrop-filter: blur(20px);
+}
+
+.image-container {
+  width: 300px;
+}
+
+.image-container img {
+  max-width: 100%;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.name-container {
+  margin-bottom: 10px;
+}
+
+.description-container {
+  text-align: center;
+}
+
+.dedicatoria {
+  color: white;
+}
+
+.description-container {
+  color: white;
+}
+
+.name-container {
+  color: white;
+}
+
+.container--wrapper {
+  margin-top: 100px;
+}
