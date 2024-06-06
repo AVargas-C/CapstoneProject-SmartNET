@@ -18,7 +18,6 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="../../components/css/sidebar_styles.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Boxicons Icons -->
-  <link rel="stylesheet" href="./buttons.css">
   
   <!-- Open Graph Tags -->
   <meta property="og:title" content="Side Bar Menu with Grid">
@@ -40,7 +39,24 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
+    .chart-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .chart-container {
+    width: 100%;
+    height: 300px;
+  }
+  .a11yAccordion .a11yAccordionItem {
+    width: 90%;
+  }
   </style>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+  </script>
 </head>
 
 <body>
@@ -126,13 +142,6 @@
     </div>
     
     <!-- Content -->
-    <!-- Buttons -->
-    <div class="button--wrapper">
-      <button class="header-button" id="button1">All Entries</button>
-      <button class="header-button" id="button2">Last Entry</button>
-      <button class="header-button" id="button3">Last 20 Entries</button>
-    </div>
-
     <div class="container">
       <ul id="accordion1" class="a11yAccordion a11yAccordion-light">
         <!-- Accordion items will be injected here by JavaScript -->
