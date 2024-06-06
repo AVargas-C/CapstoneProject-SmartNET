@@ -5,7 +5,7 @@ from datetime import datetime
 import pytz
 
 # Initialize the Firebase app
-cred = credentials.Certificate('../src/assets/DB/key-reto-estadioazteca-firebase.json')
+cred = credentials.Certificate('../src/components/DB/key-reto-estadioazteca-firebase.json')
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://reto-estadioazteca-default-rtdb.firebaseio.com/'
 })
@@ -61,9 +61,9 @@ def update_database(palco, corriente, voltage, co2, presencia, temperatura, esta
 
 #------------- CODE USAGE --------------
 update_database(
-    'palco:003', 
+    'palco:031', 
     corriente=18.0, 
-    voltage=10.0, 
+    voltage=127.0, 
     co2=400, 
     presencia=True, 
     temperatura=22.5, 
