@@ -1,4 +1,12 @@
 {
+  "name": "RETO-Estadio-Azteca",
+  "version": "1.0.0",
+  "description": "Capstone graduation project for Tecnologico de Monterrey (Mexico)",
+  "scripts": {
+    "deploy": "firebase deploy --only hosting"
+  },
+  "author": "Arturo Vargas Cuevas",
+  "license": "ISC",
   "devDependencies": {
     "firebase-tools": "^13.13.0"
   }
