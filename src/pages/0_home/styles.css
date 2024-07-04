@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url('../../public/assets/images/estadio_2.jpg');
+  background: blue;
   background-size: cover;
   background-position: center;
 }
