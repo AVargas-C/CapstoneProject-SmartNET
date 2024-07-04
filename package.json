@@ -1,5 +1,14 @@
 {
+  "name": "Reto_Estadio_Azteca",
+  "version": "1.0.0",
+  "description": "Capstone graduation project for Tecnologico de Monterrey (Mexico)",
+  "author": "Arturo Vargas Cuevas",
+  "scripts": {
+    "build": "echo 'No build step needed for static web app'"
+    // Adjust or add your build command as necessary
+  },
   "dependencies": {
     "firebase-admin": "^12.1.1"
+    // Add other dependencies if needed
   }
 }
