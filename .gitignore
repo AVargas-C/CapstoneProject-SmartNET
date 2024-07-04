@@ -1,9 +1,7 @@
 node_modules/
 /test-results/
 venv/
-key-reto-estadioazteca-firebase.json
-firebase.json
-.firebaserc
+firebase-SDK.txt
 
 
 
