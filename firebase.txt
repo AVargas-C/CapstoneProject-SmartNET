@@ -1,2 +1,12 @@
 Project Console: https://console.firebase.google.com/project/reto-estadio-azteca/overview
 Hosting URL: https://reto-estadio-azteca.web.app
+
+
+Preview Channels
+node_modules/.bin/firebase hosting:channel:deploy stage --expires 2d
+
+list preview channel
+node_modules/.bin/firebase hosting:channel:list
+
+delete
+node_modules/.bin/firebase hosting:channel:delete stage
