@@ -1,15 +1,15 @@
+// Your web app's Firebase configuration
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCnfqYtDnf95RXQvsele6IPmZtUpNhpSPQ",
-    authDomain: "reto-estadioazteca.firebaseapp.com",
-    projectId: "reto-estadioazteca",
-    storageBucket: "reto-estadioazteca.appspot.com",
-    messagingSenderId: "378312513144",
-    appId: "1:378312513144:web:1c80ba54d21c63529c3f8d",
-    databaseURL: "https://reto-estadioazteca-default-rtdb.firebaseio.com"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase

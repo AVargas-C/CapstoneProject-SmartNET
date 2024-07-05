@@ -1,5 +1,11 @@
 {
   "dependencies": {
-    "firebase-admin": "^12.1.1"
+    "firebase": "^10.12.3"
+  },
+  "scripts": {
+    "build": "echo 'No build step defined'"
+  },
+  "devDependencies": {
+    "dotenv-webpack": "^8.1.0"
   }
 }
