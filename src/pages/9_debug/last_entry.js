@@ -1,7 +1,7 @@
+// Your web app's Firebase configuration
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCvyLLnQcJrlYXYNjzAb12n-td6JqiXL6o",
   authDomain: "reto-estadio-azteca-d70b5.firebaseapp.com",

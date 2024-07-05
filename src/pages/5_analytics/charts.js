@@ -3,12 +3,13 @@ google.charts.setOnLoadCallback(drawCharts);
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyCnfqYtDnf95RXQvsele6IPmZtUpNhpSPQ",
-  authDomain: "reto-estadioazteca.firebaseapp.com",
-  projectId: "reto-estadioazteca",
-  storageBucket: "reto-estadioazteca.appspot.com",
-  messagingSenderId: "378312513144",
-  appId: "1:378312513144:web:1c80ba54d21c63529c3f8d"
+  apiKey: "AIzaSyCvyLLnQcJrlYXYNjzAb12n-td6JqiXL6o",
+  authDomain: "reto-estadio-azteca-d70b5.firebaseapp.com",
+  projectId: "reto-estadio-azteca-d70b5",
+  storageBucket: "reto-estadio-azteca-d70b5.appspot.com",
+  messagingSenderId: "1071358264660",
+  appId: "1:1071358264660:web:098b8c895147391c20f4c1",
+  measurementId: "G-KNNQW231CZ"
 };
 
 // Initialize Firebase
