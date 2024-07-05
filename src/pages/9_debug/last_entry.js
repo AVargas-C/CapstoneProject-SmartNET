@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+// Your web app's Firebase configuration
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
