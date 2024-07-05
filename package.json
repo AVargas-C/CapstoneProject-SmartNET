@@ -4,5 +4,8 @@
   },
   "scripts": {
     "build": "echo 'No build step defined'"
+  },
+  "devDependencies": {
+    "dotenv-webpack": "^8.1.0"
   }
 }
