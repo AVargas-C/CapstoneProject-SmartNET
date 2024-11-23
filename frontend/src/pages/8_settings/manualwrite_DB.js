@@ -1,12 +1,13 @@
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCvyLLnQcJrlYXYNjzAb12n-td6JqiXL6o",
-  authDomain: "reto-estadio-azteca-d70b5.firebaseapp.com",
-  projectId: "reto-estadio-azteca-d70b5",
-  storageBucket: "reto-estadio-azteca-d70b5.appspot.com",
-  messagingSenderId: "1071358264660",
-  appId: "1:1071358264660:web:098b8c895147391c20f4c1",
-  measurementId: "G-KNNQW231CZ"
+var firebaseConfig = {
+  apiKey: "AIzaSyBL5phOVI-kE8-dQEK6nBReblTT4Z1MTaM",
+  authDomain: "smartnet-39d8d.firebaseapp.com",
+  databaseURL: "https://smartnet-39d8d-default-rtdb.firebaseio.com",
+  projectId: "smartnet-39d8d",
+  storageBucket: "smartnet-39d8d.firebasestorage.app",
+  messagingSenderId: "1085688887668",
+  appId: "1:1085688887668:web:c340b4867d0e5a40049421",
+  measurementId: "G-EDBEH41WH6"
 };
 
 // Initialize Firebase

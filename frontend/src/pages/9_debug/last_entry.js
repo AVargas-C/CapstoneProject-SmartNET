@@ -2,14 +2,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.FIREBASE_APP_ID,
-  measurementId: process.env.FIREBASE_MEASUREMENT_ID
+var firebaseConfig = {
+  apiKey: "AIzaSyBL5phOVI-kE8-dQEK6nBReblTT4Z1MTaM",
+  authDomain: "smartnet-39d8d.firebaseapp.com",
+  databaseURL: "https://smartnet-39d8d-default-rtdb.firebaseio.com",
+  projectId: "smartnet-39d8d",
+  storageBucket: "smartnet-39d8d.firebasestorage.app",
+  messagingSenderId: "1085688887668",
+  appId: "1:1085688887668:web:c340b4867d0e5a40049421",
+  measurementId: "G-EDBEH41WH6"
 };
 
 // Initialize Firebase
